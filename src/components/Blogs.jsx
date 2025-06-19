@@ -325,18 +325,16 @@ export function Blogs() {
         >
           <ChevronRight
             size={14}
-            className={`transition-transform duration-300 block m-auto ${
-              sidebarVisible ? "rotate-180" : "rotate-0"
-            }`}
+            className={`transition-transform duration-300 block m-auto ${sidebarVisible ? "rotate-180" : "rotate-0"
+              }`}
           />
         </button>
       )}
 
       {/* Main Content */}
       <main
-        className={`flex-1 p-6 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
-          sidebarVisible && width > 816 ? "ml-64" : "ml-0"
-        } w-full max-w-full`}
+        className={`flex-1 p-6 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${sidebarVisible && width > 816 ? "ml-64" : "ml-0"
+          } w-full max-w-full`}
       >
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
@@ -367,31 +365,43 @@ export function Blogs() {
               Read More
             </button>
           </div>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <div className="relative flex-grow text-white">
-              <input
-                type="text"
-                placeholder="Search articles..."
-                className="w-full px-4 py-2 text-white rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:bg-gray-700 dark:text-white transition-all duration-300 focus:shadow-lg"
-              />
-              <Search className="absolute right-3 top-2.5 h-5 w-5 text-white" />
+          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 w-full ">
+            {/* Search Input */}
+            <div className="w-full sm:w-[70%]  flex items-center">
+              <div className="relative w-full pt-3">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  className="w-full h-11 px-4 pr-10 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                />
+                <Search className="absolute mt-2 top-1/2 right-3 transform -translate-y-1/2 h-5 w-5 text-white pointer-events-none" />
+              </div>
             </div>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 text-white rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:bg-gray-700 dark:text-white transition-all duration-300 focus:shadow-lg"
-            >
-              <option value="All">All Categories</option>
-              <option value="Health">Health</option>
-              <option value="Nutrition">Nutrition</option>
-              <option value="Wellness">Wellness</option>
-              <option value="History">History</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Mental Health">Mental Health</option>
-              <option value="Hygiene">Hygiene</option>
-              <option value="Contraception">Contraception</option>
-            </select>
+
+            {/* Category Dropdown */}
+            <div className="w-30 sm:w-[25%] " >
+              <div className="relative w-full mt-1 pt-1  h-11">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full h-9   flex item-center px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                 style={{ lineHeight: '3rem' }}
+              >
+                <option value="All">All Categories</option>
+                <option value="Health">Health</option>
+                <option value="Nutrition">Nutrition</option>
+                <option value="Wellness">Wellness</option>
+                <option value="History">History</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="Hygiene">Hygiene</option>
+                <option value="Contraception">Contraception</option>
+              </select>
+            </div>
+           </div>
           </div>
+
+
           {/* Trophy System */}
           {/*<div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300">
             <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400 mb-4">
@@ -487,11 +497,10 @@ export function Blogs() {
                           e.stopPropagation();
                           handleSavePost(post.id);
                         }}
-                        className={`p-2 rounded-full ${
-                          savedPosts.includes(post.id)
-                            ? "bg-pink-100 text-pink-500"
-                            : "bg-gray-100 text-gray-500"
-                        } hover:bg-pink-200 transition-colors duration-300`}
+                        className={`p-2 rounded-full ${savedPosts.includes(post.id)
+                          ? "bg-pink-100 text-pink-500"
+                          : "bg-gray-100 text-gray-500"
+                          } hover:bg-pink-200 transition-colors duration-300`}
                       >
                         <Bookmark className="h-5 w-5" />
                       </button>
@@ -535,11 +544,10 @@ export function Blogs() {
               <div
                 className="bg-gradient-to-r from-pink-500 to-purple-500 h-2.5 rounded-full transition-all duration-500 ease-out"
                 style={{
-                  width: `${
-                    (readSections.filter(Boolean).length /
-                      readSections.length) *
+                  width: `${(readSections.filter(Boolean).length /
+                    readSections.length) *
                     100
-                  }%`,
+                    }%`,
                 }}
               ></div>
             </div>
