@@ -385,7 +385,7 @@ export function Blogs() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full h-9   flex item-center px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                className="w-full h-9 flex item-center px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
                  style={{ lineHeight: '3rem' }}
               >
                 <option value="All">All Categories</option>
