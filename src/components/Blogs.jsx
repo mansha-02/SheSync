@@ -352,7 +352,7 @@ export function Blogs() {
             <div className="flex items-center space-x-4">
               <Award className="h-16 w-16 text-pink-500" />
               <div>
-                <h3 className="text-xl font-semibold text-pink dark:text-gray-200">
+                <h3 className="text-xl font-semibold text-black dark:text-white">
                   Embracing Your Cycle: A Guide to Menstrual Wellness
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mt-2">
