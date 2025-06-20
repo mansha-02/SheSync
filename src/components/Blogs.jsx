@@ -365,23 +365,26 @@ export function Blogs() {
               Read More
             </button>
           </div>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <div className="relative flex-grow text-white">
-              <input
-                type="text"
-                placeholder="Search articles..."
-                className="w-full px-4 py-2 text-white rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:bg-gray-700 dark:text-white transition-all duration-300 focus:shadow-lg"
-              />
-              <Search className="absolute right-3 top-2.5 h-5 w-5 text-white" />
+          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 w-full items-stretch ">
+            {/* Search Input */}
+            <div className="w-full sm:w-[70%]  flex ">
+              <div className="relative w-full pt-4 flex items-center">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  className="w-full h-11 px-4 pr-10 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                />
+                <Search className="absolute  right-3  h-5 w-5 text-white pointer-events-none" />
+              </div>
             </div>
 
             {/* Category Dropdown */}
-            <div className="w-30 sm:w-[25%] " >
-              <div className="relative w-full mt-1 pt-1  h-11">
+            <div className="w-30 sm:w-[30%]  flex items-center" >
+              <div className="relative w-full mt-1 pt-0.1 h-11 ">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full h-9 flex item-center px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                className="w-full h-full  px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg "
                  style={{ lineHeight: '3rem' }}
               >
                 <option value="All">All Categories</option>
@@ -597,7 +600,7 @@ export function Blogs() {
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Test your knowledge on women's health topics. Answer the
-                questions below and see how much you've learned!
+                questions below and see how much you&#39;ve learned!
               </p>
               <Quiz onQuizComplete={handleQuizComplete} />
             </div>
