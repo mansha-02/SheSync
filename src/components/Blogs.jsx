@@ -400,6 +400,8 @@ export function Blogs() {
             </div>
            </div>
           </div>
+
+
           {/* Trophy System */}
           {/*<div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300">
             <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400 mb-4">
