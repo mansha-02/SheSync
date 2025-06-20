@@ -374,21 +374,28 @@ export function Blogs() {
               />
               <Search className="absolute right-3 top-2.5 h-5 w-5 text-white" />
             </div>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 text-white rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:bg-gray-700 dark:text-white transition-all duration-300 focus:shadow-lg"
-            >
-              <option value="All">All Categories</option>
-              <option value="Health">Health</option>
-              <option value="Nutrition">Nutrition</option>
-              <option value="Wellness">Wellness</option>
-              <option value="History">History</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Mental Health">Mental Health</option>
-              <option value="Hygiene">Hygiene</option>
-              <option value="Contraception">Contraception</option>
-            </select>
+
+            {/* Category Dropdown */}
+            <div className="w-30 sm:w-[25%] " >
+              <div className="relative w-full mt-1 pt-1  h-11">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full h-9 flex item-center px-4 text-white rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-300 focus:shadow-lg"
+                 style={{ lineHeight: '3rem' }}
+              >
+                <option value="All">All Categories</option>
+                <option value="Health">Health</option>
+                <option value="Nutrition">Nutrition</option>
+                <option value="Wellness">Wellness</option>
+                <option value="History">History</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="Hygiene">Hygiene</option>
+                <option value="Contraception">Contraception</option>
+              </select>
+            </div>
+           </div>
           </div>
           {/* Trophy System */}
           {/*<div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-lg transform hover:scale-105 transition-all duration-300">
