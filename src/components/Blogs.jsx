@@ -2,35 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Calendar,
-  HeartPulse,
-  MessageSquare,
-  HeartHandshake,
-  AppWindowMac,
-  Frown,
-  Smile,
-  Angry,
-  Coffee,
-  Zap,
-  Moon,
-  Handshake,
   ChevronDown,
-  Gamepad2,
   ChevronUp,
-  Heart,
-  Sun,
-  LayoutDashboard,
-  Home,
-  GraduationCap,
-  ShoppingBag,
-  ActivitySquare,
   Stethoscope,
-  Bot,
   Search,
-  BookOpen,
   Utensils,
   Leaf,
   Clock,
-  Filter,
   Bookmark,
   Share2,
   Award,
@@ -41,7 +19,6 @@ import {
   Droplet,
   X,
   ChevronRight,
-  ClipboardList,
 } from "lucide-react";
 import { Quiz } from "./Quiz";
 import SideBar from "./SideBar";
@@ -375,7 +352,7 @@ export function Blogs() {
             <div className="flex items-center space-x-4">
               <Award className="h-16 w-16 text-pink-500" />
               <div>
-                <h3 className="text-xl font-semibold text-pink dark:text-gray-200">
+                <h3 className="text-xl font-semibold text-black dark:text-white">
                   Embracing Your Cycle: A Guide to Menstrual Wellness
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mt-2">
@@ -388,6 +365,7 @@ export function Blogs() {
               Read More
             </button>
           </div>
+
           <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 w-full ">
             {/* Search Input */}
             <div className="w-full sm:w-[70%]  flex items-center">
