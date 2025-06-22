@@ -25,6 +25,8 @@ import { ParentDashboard } from "./components/ParentDashboard";
 import { Diagnosis } from "./components/PartnerDashboard";
 import { ThemeProvider } from "./context/ThemeContext";
 import SheSyncLoader from "./components/loader";
+import Bliss from "./components/Bliss/Bliss";
+import Quiz from "./components/Bliss/games/Quiz";
 
 function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
@@ -104,6 +106,14 @@ const router = createBrowserRouter([
   {
     path: "/partner",
     element: <ProtectedRouteWrapper Component={Diagnosis} />,
+  },
+  {
+    path: "/bliss",
+    element: <ProtectedRouteWrapper Component={Bliss} />,
+  },
+  {
+    path: "/bliss/quiz",
+    element: <ProtectedRouteWrapper Component={Quiz} />,
   },
 ]);
 
