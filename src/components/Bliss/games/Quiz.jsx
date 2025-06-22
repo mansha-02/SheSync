@@ -4,7 +4,6 @@ import Sidebar from "../../SideBar";
 import { ChevronRight, Headphones, ArrowLeft } from "lucide-react";
 import axios from "axios";
 
-
 const questions = [
     {
         question: "How was your day today?",

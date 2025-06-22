@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const games = [
   {
     title: "Quiz",
-    image: "/public/bliss/images/quiz.jpg",
+    image: "/bliss/images/quiz.jpg",
     description:
       "It's a mental state assessment quiz. Based on your answers, a playlist is created to improve your mental state.",
     link: "/bliss/quiz",
   },
   {
     title: "Sudoku",
-    image: "/game/Assets/Images/sudoku.jpg",
+    image: "/bliss/images/sudoku.jpg",
     description:
-      "Fill a 9×9 grid with digits so that every row, column, and 3×3 box contains all digits from 1 to 9.",
-    link: "/game/sudoku.html",
+      "Fill a 9x9 grid with digits so that every row, column, and 3x3 box contains all digits from 1 to 9.",
+    link: "/bliss/sudoku",
   },
   {
     title: "Memory Game",

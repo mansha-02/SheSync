@@ -27,6 +27,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import SheSyncLoader from "./components/loader";
 import Bliss from "./components/Bliss/Bliss";
 import Quiz from "./components/Bliss/games/Quiz";
+import Sudoku from "./components/Bliss/games/Sudoku";
 
 function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
   {
     path: "/bliss/quiz",
     element: <ProtectedRouteWrapper Component={Quiz} />,
+  },
+  {
+    path: "/bliss/sudoku",
+    element: <ProtectedRouteWrapper Component={Sudoku} />,
   },
 ]);
 
