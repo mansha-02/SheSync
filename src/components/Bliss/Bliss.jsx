@@ -41,10 +41,10 @@ const games = [
   },
   {
     title: "Simon Game",
-    image: "/game/Assets/Images/simon.jpg",
+    image: "/bliss/images/simon_game.png",
     description:
       "Repeat the pattern shown by the game. Test your memory and reflexes!",
-    link: "/game/simon.html",
+    link: "/bliss/simon",
   },
 ];
 
