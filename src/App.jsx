@@ -29,6 +29,8 @@ import Bliss from "./components/Bliss/Bliss";
 import Quiz from "./components/Bliss/games/Quiz";
 import Sudoku from "./components/Bliss/games/Sudoku";
 import MemoryGame from "./components/Bliss/games/MemoryGame";
+import QuoteJoke from "./components/Bliss/games/QuoteJoke";
+import MoodMap from "./components/Bliss/games/Moodmap";
 
 function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
@@ -124,6 +126,14 @@ const router = createBrowserRouter([
   {
     path: "/bliss/memory-game",
     element: <ProtectedRouteWrapper Component={MemoryGame} />,
+  },
+  {
+    path: "/bliss/joke-quote",
+    element: <ProtectedRouteWrapper Component={QuoteJoke} />,
+  },
+  {
+    path: "/bliss/mood-map",
+    element: <ProtectedRouteWrapper Component={MoodMap} />,
   },
 ]);
 

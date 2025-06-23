@@ -20,31 +20,24 @@ const games = [
   },
   {
     title: "Memory Game",
-    image: "/bliss/images//memorygame.jpg",
+    image: "/bliss/images/memorygame.jpg",
     description:
       "Flip cards to find identical pairs. Train your memory and have fun.",
     link: "/bliss/memory-game",
   },
   {
     title: "Jokes And Quotes",
-    image: "/game/Assets/Images/laugh.jpg",
+    image: "/bliss/images/laugh.jpg",
     description:
       "Uplift your mood with jokes and quotes. Share with your friends and enjoy.",
-    link: "/game/fun.html",
+    link: "/bliss/joke-quote",
   },
   {
     title: "Mood Map",
-    image: "/game/Assets/Images/mood-map.png",
+    image: "/bliss/images/moodmap.jpg",
     description:
       "Track your mood via a video feed and share your emotional insights with friends.",
-    link: "/game/mood.html",
-  },
-  {
-    title: "Audio Player",
-    image: "/game/Assets/Images/music.jpg",
-    description:
-      "A feature-rich music player with visualizer. Play and enjoy your favorite songs.",
-    link: "/game/Audio_player.html",
+    link: "/bliss/mood-map",
   },
   {
     title: "Simon Game",
@@ -52,14 +45,6 @@ const games = [
     description:
       "Repeat the pattern shown by the game. Test your memory and reflexes!",
     link: "/game/simon.html",
-  },
-  {
-    title: "Dice Game",
-    image:
-      "https://www.youcubed.org/wp-content/uploads/2020/03/shutterstock_1140911045.png",
-    description:
-      "Roll two dice. The higher number wins. A fun game of chance and luck!",
-    link: "/game/dice.html",
   },
 ];
 
@@ -129,7 +114,7 @@ export default function Bliss() {
                     to={game.link}
                     className="mt-4 inline-block bg-pink-600 text-white text-center py-2 px-4 rounded-lg hover:bg-pink-700 hover:text-gray-200 transition-colors"
                   >
-                    {["Audio Player", "Mood Map", "Simon Game", "Dice Game"].includes(game.title)
+                    {["Mood Map", "Simon Game"].includes(game.title)
                       ? "Visit"
                       : "Play"}
                   </Link>
