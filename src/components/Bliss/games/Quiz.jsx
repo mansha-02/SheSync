@@ -31,6 +31,7 @@ export default function Quiz() {
     const [answers, setAnswers] = useState([]);
     const [playlist, setPlaylist] = useState(null);
     const navigate = useNavigate();
+    const [moodKeyword, setMoodKeyword] = useState("");
 
     const toggleSidebar = () => setSidebarVisible((prev) => !prev);
 
@@ -42,6 +43,7 @@ export default function Quiz() {
             setStep(step + 1);
         } else {
             const mood = generateMoodKeyword(newAnswers);
+            setMoodKeyword(mood);
             try {
                 const res = await axios.get(
                     `http://localhost:3000/api/spotify/recommend?mood=${encodeURIComponent(mood)}`
@@ -124,33 +126,28 @@ export default function Quiz() {
                         </div>
                     </>
                 ) : (
-                    <div className="text-center">
+                    <div className="text-center flex flex-col items-center">
                         <h2 className="text-3xl font-bold text-pink-600 mb-6 flex justify-center items-center gap-2">
                             <Headphones className="w-7 h-7" /> Your Playlist Suggestion
                         </h2>
-                        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
-                            {playlist.images?.[0]?.url && (
-                                <img
-                                    src={playlist.images[0].url}
-                                    alt={playlist.name}
-                                    className="w-full rounded-md mb-4 dark:brightness-100 dark:contrast-100"
-                                    style={{ filter: "none", mixBlendMode: "normal" }}
+
+                        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl flex flex-col items-center">
+                            <div className="w-full mt-4">
+                                <iframe
+                                    src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator`}
+                                    width="100%"
+                                    height="450"
+                                    frameBorder="0"
+                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                    loading="lazy"
+                                    className="rounded-lg"
                                 />
-                            )}
-                            <h3 className="text-xl font-semibold text-pink-700 dark:text-pink-300">
-                                {playlist.name}
-                            </h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                                by {playlist.owner.display_name}
+                            </div>
+
+                            {/* Mood Result Below Playlist */}
+                            <p className="mt-6 text-pink-700 dark:text-pink-300 text-lg font-medium">
+                                Your mood – <span className="capitalize">{moodKeyword}</span>
                             </p>
-                            <a
-                                href={playlist.external_urls.spotify}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-                            >
-                                Listen on Spotify
-                            </a>
                         </div>
                     </div>
                 )}
