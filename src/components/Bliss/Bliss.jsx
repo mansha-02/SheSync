@@ -20,10 +20,10 @@ const games = [
   },
   {
     title: "Memory Game",
-    image: "/game/Assets/Images/memorygame.jpg",
+    image: "/bliss/images//memorygame.jpg",
     description:
       "Flip cards to find identical pairs. Train your memory and have fun.",
-    link: "/game/memory-game.html",
+    link: "/bliss/memory-game",
   },
   {
     title: "Jokes And Quotes",
@@ -127,7 +127,7 @@ export default function Bliss() {
                   </div>
                   <Link
                     to={game.link}
-                    className="mt-4 inline-block bg-pink-600 text-white text-center py-2 px-4 rounded-lg hover:bg-pink-700 transition"
+                    className="mt-4 inline-block bg-pink-600 text-white text-center py-2 px-4 rounded-lg hover:bg-pink-700 hover:text-gray-200 transition-colors"
                   >
                     {["Audio Player", "Mood Map", "Simon Game", "Dice Game"].includes(game.title)
                       ? "Visit"

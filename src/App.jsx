@@ -28,6 +28,7 @@ import SheSyncLoader from "./components/loader";
 import Bliss from "./components/Bliss/Bliss";
 import Quiz from "./components/Bliss/games/Quiz";
 import Sudoku from "./components/Bliss/games/Sudoku";
+import MemoryGame from "./components/Bliss/games/MemoryGame";
 
 function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
   {
     path: "/bliss/sudoku",
     element: <ProtectedRouteWrapper Component={Sudoku} />,
+  },
+  {
+    path: "/bliss/memory-game",
+    element: <ProtectedRouteWrapper Component={MemoryGame} />,
   },
 ]);
 
