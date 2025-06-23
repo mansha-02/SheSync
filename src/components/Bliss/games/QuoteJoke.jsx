@@ -70,17 +70,14 @@ export default function QuoteJoke() {
             {/* Back to Bliss */}
             <button
                 onClick={() => navigate("/bliss")}
-                className="absolute top-4 right-4 z-50 flex items-center gap-2 bg-white text-pink-600 border border-pink-300 hover:bg-pink-100 dark:bg-gray-900 dark:text-pink-400 dark:border-pink-800 dark:hover:bg-gray-800 transition px-4 py-2 rounded-md text-sm shadow-md"
+                className="fixed top-4 right-4 z-30 lg:z-40 flex items-center gap-2 bg-white text-pink-600 border border-pink-300 hover:bg-pink-100 dark:bg-gray-900 dark:text-pink-400 dark:border-pink-800 dark:hover:bg-gray-800 transition px-4 py-2 rounded-md text-sm shadow-md"
             >
-                <ArrowLeft size={14} />
+                <ArrowLeft className="w-4 h-4" />
                 Back to Bliss Page
             </button>
 
             {/* Main Content */}
-            <div
-                className={`flex-1 transition-all duration-300 ${sidebarVisible ? "ml-64" : "ml-0"
-                    } p-6 flex flex-col items-center justify-start text-center`}
-            >
+                  <div className={`flex-1 transition-all duration-300 ${sidebarVisible ? "lg:ml-64" : "ml-0"} p-6 flex flex-col items-center justify-center text-center`}>
                 <h1 className="text-4xl font-bold text-pink-700 dark:text-pink-300 mb-10">
                     Jokes & Quotes
                 </h1>

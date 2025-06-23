@@ -57,32 +57,30 @@ export default function Bliss() {
 
   return (
     <div className="flex h-screen bg-pink-50 dark:bg-gray-950 overflow-hidden">
-      {/* Sidebar */}
+      {/* Sidebar (mobile toggle handled inside Sidebar) */}
       <Sidebar
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
-        activeLink={13} // Bliss index
+        activeLink={13}
       />
 
-      {/* Sidebar Toggle Button */}
+      {/* Toggle Button (only on laptops) */}
       <button
         onClick={toggleSidebar}
-        className="hidden lg:block fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+        className="hidden lg:block fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300"
         style={{
           transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
         }}
-        aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       >
         <ChevronRight
           size={14}
-          className={`transition-transform duration-300 block m-auto ${sidebarVisible ? "rotate-180" : "rotate-0"
-            }`}
+          className={`m-auto transition-transform ${sidebarVisible ? "rotate-180" : ""}`}
         />
       </button>
 
       {/* Main Content */}
       <div
-        className={`flex-1 overflow-y-auto transition-all duration-300 ${sidebarVisible ? "ml-64" : "ml-0"
+        className={`flex-1 overflow-y-auto transition-all duration-300 ${sidebarVisible ? "lg:ml-64" : "ml-0"
           }`}
       >
         <div className="p-6 max-w-7xl mx-auto">

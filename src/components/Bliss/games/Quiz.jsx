@@ -49,6 +49,9 @@ export default function Quiz() {
                     `http://localhost:3000/api/spotify/recommend?mood=${encodeURIComponent(mood)}`
                 );
                 setPlaylist(res.data.playlist);
+                console.log("Final Answers:", newAnswers);
+                console.log("Mood:", mood);
+                console.log("Playlist Result:", res.data.playlist);
             } catch (err) {
                 console.error("Failed to fetch playlist:", err.message);
             }
@@ -56,7 +59,7 @@ export default function Quiz() {
     };
 
     const generateMoodKeyword = (answers) => {
-        const [day, feeling] = answers;
+        const [day, feeling, genre] = answers;
         if (feeling.includes("Happy")) return "happy";
         if (feeling.includes("Sad")) return "sad";
         if (feeling.includes("Angry")) return "angry";
@@ -67,7 +70,7 @@ export default function Quiz() {
     };
 
     return (
-        <div className="flex h-screen bg-pink-50 dark:bg-gray-950 overflow-hidden">
+        <div className="flex min-h-screen bg-pink-50 dark:bg-gray-950 overflow-auto">
             <Sidebar
                 sidebarVisible={sidebarVisible}
                 setSidebarVisible={setSidebarVisible}
@@ -92,17 +95,14 @@ export default function Quiz() {
             {/* Back to Bliss Page button */}
             <button
                 onClick={() => navigate("/bliss")}
-                className="absolute top-4 right-4 z-50 flex items-center gap-2 bg-white text-pink-600 border border-pink-300 hover:bg-pink-100 dark:bg-gray-900 dark:text-pink-400 dark:border-pink-800 dark:hover:bg-gray-800 transition px-4 py-2 rounded-md text-sm shadow-md"
+                className="fixed top-4 right-4 z-30 lg:z-40 flex items-center gap-2 bg-white text-pink-600 border border-pink-300 hover:bg-pink-100 dark:bg-gray-900 dark:text-pink-400 dark:border-pink-800 dark:hover:bg-gray-800 transition px-4 py-2 rounded-md text-sm shadow-md"
             >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Bliss Page
             </button>
 
             {/* Main Content */}
-            <div
-                className={`flex-1 transition-all duration-300 ${sidebarVisible ? "ml-64" : "ml-0"
-                    } p-6 flex flex-col items-center justify-center text-center`}
-            >
+            <div className={`flex-1 transition-all duration-300 ${sidebarVisible ? "lg:ml-64" : "ml-0"} p-6 flex flex-col items-center justify-center text-center`}>
                 {!playlist ? (
                     <>
                         {/* QUIZ Title */}
@@ -133,15 +133,17 @@ export default function Quiz() {
 
                         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl flex flex-col items-center">
                             <div className="w-full mt-4">
-                                <iframe
-                                    src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator`}
-                                    width="100%"
-                                    height="450"
-                                    frameBorder="0"
-                                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                    loading="lazy"
-                                    className="rounded-lg"
-                                />
+                                {playlist?.id && (
+                                    <iframe
+                                        src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator`}
+                                        width="100%"
+                                        height="450"
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                        loading="lazy"
+                                        className="rounded-lg"
+                                    />
+                                )}
+
                             </div>
 
                             {/* Mood Result Below Playlist */}
