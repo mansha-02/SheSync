@@ -145,14 +145,13 @@ export default function Sudoku() {
                 setSidebarVisible={setSidebarVisible}
                 activeLink={13} // Bliss
             />
-
-            {/* Sidebar toggle button (Top-Right) */}
             <button
                 onClick={toggleSidebar}
-                className="fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+                className="hidden lg:block fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
                 style={{
                     transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
                 }}
+                aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
             >
                 <ChevronRight
                     size={14}
@@ -181,8 +180,8 @@ export default function Sudoku() {
                                 <button
                                     key={diff}
                                     className={`px-3 py-1 rounded ${difficulty === diff
-                                            ? "bg-pink-700 text-white"
-                                            : "bg-white text-pink-700 border"
+                                        ? "bg-pink-700 text-white"
+                                        : "bg-white text-pink-700 border"
                                         }`}
                                     onClick={() => {
                                         setDifficulty(diff);

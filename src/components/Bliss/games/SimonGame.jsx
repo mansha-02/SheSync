@@ -107,14 +107,15 @@ export default function SimonGame() {
             {/* Sidebar Toggle */}
             <button
                 onClick={toggleSidebar}
-                className="fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md"
+                className="hidden lg:block fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
                 style={{
                     transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
                 }}
+                aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
             >
                 <ChevronRight
                     size={14}
-                    className={`transition-transform m-auto ${sidebarVisible ? "rotate-180" : "rotate-0"
+                    className={`transition-transform duration-300 block m-auto ${sidebarVisible ? "rotate-180" : "rotate-0"
                         }`}
                 />
             </button>

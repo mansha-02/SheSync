@@ -77,7 +77,7 @@ export default function Quiz() {
             {/* Sidebar toggle arrow */}
             <button
                 onClick={toggleSidebar}
-                className="fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+                className="hidden lg:block fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
                 style={{
                     transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
                 }}
