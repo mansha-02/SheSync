@@ -110,6 +110,34 @@ const router = createBrowserRouter([
     path: "/partner",
     element: <ProtectedRouteWrapper Component={Diagnosis} />,
   },
+  {
+    path: "/bliss",
+    element: <ProtectedRouteWrapper Component={Bliss} />,
+  },
+  {
+    path: "/bliss/quiz",
+    element: <ProtectedRouteWrapper Component={Quiz} />,
+  },
+  {
+    path: "/bliss/sudoku",
+    element: <ProtectedRouteWrapper Component={Sudoku} />,
+  },
+  {
+    path: "/bliss/memory-game",
+    element: <ProtectedRouteWrapper Component={MemoryGame} />,
+  },
+  {
+    path: "/bliss/joke-quote",
+    element: <ProtectedRouteWrapper Component={QuoteJoke} />,
+  },
+  {
+    path: "/bliss/mood-map",
+    element: <ProtectedRouteWrapper Component={MoodMap} />,
+  },
+  {
+    path: "/bliss/simon",
+    element: <ProtectedRouteWrapper Component={SimonGame} />,
+  },
 ]);
 
 function App() {
