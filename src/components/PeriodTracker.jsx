@@ -72,13 +72,13 @@ export function PeriodTracker() {
   const { isLoaded, isSignedIn } = useAuth();
   const { user } = useUser();
   const { width } = useScreenSize();
-  
+
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [isLoaded, isSignedIn, navigate]);
-  
+
   const [sidebarVisible, setSideBarVisible] = useState(true);
   const [cycleDuration, setCycleDuration] = useState("");
   const [lastPeriodStart, setLastPeriodStart] = useState("");
@@ -113,14 +113,14 @@ export function PeriodTracker() {
       navigate("/login");
     }
   }, [isLoaded, isSignedIn, navigate]);
-  
+
   const handleWaterIntakeUpdate = async () => {
     if (!isSignedIn || !user) {
       alert("You must be logged in to update water intake");
-      navigate('/login');
+      navigate("/login");
       return;
     }
-    
+
     try {
       const response = await axios.get(
         `${server_url}/api/period/waterupdate/me`,
@@ -218,13 +218,13 @@ export function PeriodTracker() {
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-    
+
     if (!isSignedIn || !user) {
       alert("You must be logged in to submit data");
-      navigate('/login');
+      navigate("/login");
       return;
     }
-    
+
     const submissionData = {
       userId: user.id,
       cycleDuration,
@@ -243,7 +243,7 @@ export function PeriodTracker() {
 
     try {
       const token = await user.getToken();
-      
+
       try {
         const response = await axios.post(
           `${server_url}/api/period/trackerdata`,
@@ -251,7 +251,7 @@ export function PeriodTracker() {
           {
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -260,7 +260,10 @@ export function PeriodTracker() {
         alert("Data submitted successfully!");
         return;
       } catch (primaryError) {
-        console.warn("Primary server failed, attempting local fallback:", primaryError);
+        console.warn(
+          "Primary server failed, attempting local fallback:",
+          primaryError
+        );
       }
 
       const localResponse = await axios.post(
@@ -269,11 +272,14 @@ export function PeriodTracker() {
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("Data submitted successfully via local server:", localResponse.data);
+      console.log(
+        "Data submitted successfully via local server:",
+        localResponse.data
+      );
       setShowHealthTips(true);
       alert("Data submitted successfully!");
     } catch (error) {
@@ -514,10 +520,11 @@ export function PeriodTracker() {
                 key={mood.name}
                 type="button"
                 onClick={() => handleMoodTypeChange(mood.name)}
-                className={`flex items-center space-x-2 p-3 rounded-md transition-colors ${isSelected
-                  ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
-                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
-                  }`}
+                className={`flex items-center space-x-2 p-3 rounded-md transition-colors ${
+                  isSelected
+                    ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
+                    : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                }`}
               >
                 <MoodIcon className="w-5 h-5" />
                 <span>{mood.name}</span>
@@ -537,10 +544,11 @@ export function PeriodTracker() {
               key={option.value}
               type="button"
               onClick={() => setMoodSeverity(option.value)}
-              className={`px-4 py-2 rounded-md transition-colors ${moodSeverity === option.value
-                ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
-                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
-                }`}
+              className={`px-4 py-2 rounded-md transition-colors ${
+                moodSeverity === option.value
+                  ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+              }`}
             >
               {option.name}
             </button>
@@ -607,10 +615,11 @@ export function PeriodTracker() {
                           onClick={() =>
                             handleSymptomSeverityChange(symptom, severity)
                           }
-                          className={`px-2 py-1 text-xs rounded-md transition-colors ${symptomSeverities[symptom] === severity
-                            ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
-                            : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
-                            }`}
+                          className={`px-2 py-1 text-xs rounded-md transition-colors ${
+                            symptomSeverities[symptom] === severity
+                              ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
+                              : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+                          }`}
                         >
                           {severity}
                         </button>
@@ -658,10 +667,11 @@ export function PeriodTracker() {
               key={quality}
               type="button"
               onClick={() => setSleepQuality(quality)}
-              className={`px-4 py-2 rounded-md transition-colors ${sleepQuality === quality
-                ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
-                : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
-                }`}
+              className={`px-4 py-2 rounded-md transition-colors ${
+                sleepQuality === quality
+                  ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+              }`}
             >
               {quality}
             </button>
@@ -699,11 +709,8 @@ export function PeriodTracker() {
   return (
     <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
       <SideBar
-        visible={sidebarVisible}
-        toggleSidebar={toggleSidebar}
+        sidebarVisible={sidebarVisible}
         setSidebarVisible={setSideBarVisible}
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
         activeLink={4}
       />
       {width > 816 && (
@@ -724,7 +731,11 @@ export function PeriodTracker() {
         </button>
       )}
 
-      <div className={`flex-1 p-6 lg:p-8 ${sidebarVisible && width > 816 ? "ml-64" : "ml-0"} w-full max-w-full transition-all duration-300 ease-in-out`}>
+      <div
+        className={`flex-1 p-6 lg:p-8 ${
+          sidebarVisible && width > 816 ? "ml-64" : "ml-0"
+        } w-full max-w-full transition-all duration-300 ease-in-out`}
+      >
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -749,8 +760,16 @@ export function PeriodTracker() {
 
           {renderSection("Cycle Information", cycleInfoContent, "cycleInfo")}
           {renderSection("Mood Tracking", moodTrackingContent, "moodTracking")}
-          {renderSection("Symptom Tracking", symptomTrackingContent, "symptomTracking")}
-          {renderSection("Sleep Tracking", sleepTrackingContent, "sleepTracking")}
+          {renderSection(
+            "Symptom Tracking",
+            symptomTrackingContent,
+            "symptomTracking"
+          )}
+          {renderSection(
+            "Sleep Tracking",
+            sleepTrackingContent,
+            "sleepTracking"
+          )}
           {renderSection("Health Tips", healthTipsContent, "healthTips")}
 
           <div className="mt-8 flex justify-center">

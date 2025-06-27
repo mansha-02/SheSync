@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import './index.css';
+import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -35,15 +35,15 @@ import SimonGame from "./components/Bliss/games/SimonGame";
 
 function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
-  
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
-  
+
   if (!isSignedIn) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return <Component />;
 }
 
