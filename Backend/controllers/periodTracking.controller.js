@@ -1,9 +1,12 @@
-import { PeriodTracking } from "../models/periodTrackingModel.js";
-import { User } from "../models/userModel.js";
+import { PeriodTracking } from '../models/periodTracking.model.js';
+// import { User } from "../models/userModel.js";
+import { periodTrackingSchema } from '../validators/periodTracking.zod.js';
+import { clerkClient, getAuth } from '@clerk/express';
 
 export const trackerDataController = async (req, res) => {
-  const { ...trackerData } = req.body;
-  const userId = req.user.clerkId || req.user._id; 
+  const { ...trackerData } = periodTrackingSchema.parse(req.body);
+  // const userId = req.user.clerkId || req.user._id;
+  const userId = getAuth(req).userId;
 
   try {
     const newPeriodTracking = new PeriodTracking({
@@ -12,14 +15,12 @@ export const trackerDataController = async (req, res) => {
     });
 
     await newPeriodTracking.save();
-    console.log("Tracker data submitted:", newPeriodTracking);
-    res
-      .status(201)
-      .json({ message: "Period tracking data saved successfully" });
+    console.log('Tracker data submitted:', newPeriodTracking);
+    res.status(201).json({ message: 'Period tracking data saved successfully' });
   } catch (error) {
-    console.error("Error saving period tracking data:", error);
+    console.error('Error saving period tracking data:', error);
     res.status(500).json({
-      message: "Error saving period tracking data",
+      message: 'Error saving period tracking data',
       error: error.message,
     });
   }
@@ -27,53 +28,52 @@ export const trackerDataController = async (req, res) => {
 
 export const periodTrackingController = async (req, res) => {
   const { userId } = req.params;
-  const authenticatedUserId = req.user.clerkId || req.user._id; 
-  
+  const authenticatedUserId = getAuth(req).userId;
+
+  const currentUser = await clerkClient.users.getUser(authenticatedUserId);
+
   const userIdToQuery = userId === 'me' ? authenticatedUserId : userId;
-  
-  
+
   if (userIdToQuery !== authenticatedUserId) {
-    return res.status(403).json({ message: "You can only access your own data" });
+    return res.status(403).json({ message: 'You can only access your own data' });
   }
 
   try {
     const periodTrackingData = await PeriodTracking.findOne({
       user: userIdToQuery,
     }).sort({ date: -1 });
-    
+
     if (!periodTrackingData) {
-      return res
-        .status(404)
-        .json({ message: "No period tracking data found for this user" });
+      return res.status(404).json({ message: 'No period tracking data found for this user' });
     }
-    
-    
+
     const user = {
       _id: authenticatedUserId,
-      name: req.user.name,
-      email: req.user.email
+      name: currentUser.firstName + ' ' + currentUser.lastName,
+      email: currentUser.emailAddresses[0].emailAddress,
     };
-    
+
     res.status(200).json({ periodTrackingData, user });
   } catch (error) {
-    console.error("Error fetching period tracking data:", error);
+    console.error('Error fetching period tracking data:', error);
     res.status(500).json({
-      message: "Error fetching period tracking data",
+      message: 'Error fetching period tracking data',
       error: error.message,
     });
   }
 };
 export const waterUpdateController = async (req, res) => {
   const { userId } = req.params;
-  const authenticatedUserId = req.user.clerkId || req.user._id; 
-  
+  const authenticatedUserId = getAuth(req).userId;
+
+  const currentUser = await clerkClient.users.getUser(authenticatedUserId);
+
   const userIdToQuery = userId === 'me' ? authenticatedUserId : userId;
-  
-  
+
   if (userIdToQuery !== authenticatedUserId) {
-    return res.status(403).json({ message: "You can only update your own data" });
+    return res.status(403).json({ message: 'You can only update your own data' });
   }
-  
+
   try {
     const today = new Date().toISOString().slice(0, 10);
 
@@ -88,7 +88,7 @@ export const waterUpdateController = async (req, res) => {
     } else {
       if (tracking.waterIntakeCount >= 8) {
         return res.status(400).json({
-          message: "You have already logged 8 glasses of water today.",
+          message: 'You have already logged 8 glasses of water today.',
         });
       }
       if (tracking.lastWaterLogDate !== today) {
@@ -105,7 +105,7 @@ export const waterUpdateController = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Error updating water intake data",
+      message: 'Error updating water intake data',
       error: error.message,
     });
   }

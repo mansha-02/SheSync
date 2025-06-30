@@ -1,7 +1,7 @@
 // routes/spotify.js
-import express from "express";
-import axios from "axios";
-import dotenv from "dotenv";
+import express from 'express';
+import axios from 'axios';
+import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables from .env
 
@@ -20,14 +20,12 @@ async function getAccessToken() {
   if (accessToken && tokenExpiration > now) return accessToken;
 
   const response = await axios.post(
-    "https://accounts.spotify.com/api/token",
-    new URLSearchParams({ grant_type: "client_credentials" }),
+    'https://accounts.spotify.com/api/token',
+    new URLSearchParams({ grant_type: 'client_credentials' }),
     {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization:
-          "Basic " +
-          Buffer.from(client_id + ":" + client_secret).toString("base64"),
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + Buffer.from(client_id + ':' + client_secret).toString('base64'),
       },
     }
   );
@@ -38,15 +36,15 @@ async function getAccessToken() {
 }
 
 // 🎧 GET /spotify/recommend?mood=happy
-router.get("/recommend", async (req, res) => {
+router.get('/recommend', async (req, res) => {
   const { mood } = req.query;
-  if (!mood) return res.status(400).json({ error: "Mood is required." });
+  if (!mood) return res.status(400).json({ error: 'Mood is required.' });
 
   try {
     const token = await getAccessToken();
     const response = await axios.get(
       `https://api.spotify.com/v1/search?q=${encodeURIComponent(
-        mood + " mood"
+        mood + ' mood'
       )}&type=playlist&limit=1`,
       {
         headers: { Authorization: `Bearer ${token}` },
@@ -56,8 +54,8 @@ router.get("/recommend", async (req, res) => {
     const playlist = response.data.playlists.items[0];
     res.json({ playlist });
   } catch (error) {
-    console.error("Spotify error:", error.message);
-    res.status(500).json({ error: "Failed to fetch playlist" });
+    console.error('Spotify error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch playlist' });
   }
 });
 
