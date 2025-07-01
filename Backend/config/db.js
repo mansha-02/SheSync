@@ -1,16 +1,15 @@
 import mongoose from 'mongoose';
-import { MONGO_URL } from '../index.js';
+
+
+
 export async function connectDb() {
   try {
-    await mongoose
-      .connect(MONGO_URL)
-      .then(() => {
-        console.log('Successfully connected to MongoDB');
-        console.log(MONGO_URL);
+    const connectionInstance = await mongoose.connect(`${process.env.MONGO_URL}/${process.env.APP_NAME}`)
+      .then((connectionInstance) => {
+        console.log(`MongoDB connection successful Instance Name ${connectionInstance.connection.host }`);
       })
       .catch(error => {
         console.error('MongoDB connection error:', error);
-        console.log(MONGO_URL);
       });
   } catch (error) {
     console.log(error);

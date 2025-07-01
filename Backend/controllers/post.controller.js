@@ -1,6 +1,6 @@
 import { Post } from '../models/post.model.js';
-import { createPostSchema } from '../validators/post.zod.js';
-import { getAuth } from '@clerk/express';
+import { createPostSchema, likePostSchema } from '../validators/post.zod.js';
+
 
 export async function createPost(req, res) {
   try {
@@ -9,10 +9,6 @@ export async function createPost(req, res) {
 
     if (!userId) {
       return res.status(401).json({ message: 'Authentication required' });
-    }
-
-    if (!title || !category || !content) {
-      return res.status(400).json({ message: 'All fields are required' });
     }
 
     try {
@@ -36,21 +32,22 @@ export async function createPost(req, res) {
   }
 }
 
-export async function getPosts(req, res) {
+export async function getPosts( _, res) {
   try {
     const posts = await Post.find({limit: 10});
     if (posts.length === 0) {
       return res.status(404).json({ message: 'No posts found' });
     }
-    res.status(200).json(posts);
+    return res.status(200).json(posts);
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ error: 'Failed to get posts' });
   }
 }
 
 export async function likePost(req, res) {
   try {
-    const { id } = req.params;
+    const { id } = likePostSchema.parse(req.params);
     const { userId } = req.auth();
 
     if (!userId) {
@@ -70,9 +67,9 @@ export async function likePost(req, res) {
     post.likes.push(userId);
     await post.save();
 
-    res.status(200).json({ message: 'Post liked successfully' });
+    return res.status(200).json({ message: 'Post liked successfully' });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }

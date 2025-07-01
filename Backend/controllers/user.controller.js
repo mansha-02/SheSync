@@ -1,14 +1,6 @@
-import { getAuth } from '@clerk/express';
 import { User } from '../models/user.model.js';
-import { createUserFromClerkSchema, getUserProfileSchema } from '../validators/user.zod.js';
-import cookieParser from 'cookie-parser';
-import jwt from 'jsonwebtoken';
+import { createUserFromClerkSchema } from '../validators/user.zod.js';
 
-const generateToken = (userId) => {
-  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-    expiresIn: '1h', // Token expires in 1 hour
-  });
-};
 
 
 export async function createUserFromClerk(req, res) {
@@ -50,6 +42,8 @@ export async function createUserFromClerk(req, res) {
     return res.status(500).json({ message: 'Server error' });
   }
 }
+
+
 
 export async function getUserProfile(req, res) {
   try {

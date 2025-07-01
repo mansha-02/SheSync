@@ -1,8 +1,8 @@
 import {z} from 'zod';
 export const createUserFromClerkSchema = z.object({
-  clerkId: z.string(),
-  name: z.string(),
-  email: z.string().email(),
+  clerkId: z.string().nonempty("Clerk ID is required"),
+  name: z.string().nonempty("Name is required"),
+  email: z.string().email().nonempty("Email is required"),
 });
 
 export const getUserProfileSchema = z.string()

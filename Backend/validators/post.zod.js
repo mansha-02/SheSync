@@ -9,11 +9,11 @@ export const postSchema = z.object({
 });
 
 export const createPostSchema = z.object({
-  title: z.string(),
-  category: z.string(),
-  content: z.string(),
+  title: z.string().nonempty("Title is required"),
+  category: z.string().nonempty("Category is required"),
+  content: z.string().nonempty("Content is required"),
 });
 
-export const likePostSchema = z.object({
-  clerkId: z.string(),
-});
+export const likePostSchema = z.string()
+  .regex(/^[0-9a-fA-F]{24}$/, "Invalid User ID format (expected MongoDB ObjectId)")
+  .nonempty("User Id is required");
