@@ -4,9 +4,12 @@ import dotenv from 'dotenv';
 import { connectDb } from './config/db.js';
 import periodTrackingRoutes from './routes/periodTracking.route.js';
 import postRoutes from './routes/post.route.js';
-import authRoutes from './routes/user.route.js';
+// import authRoutes from './routes/user.route.js';
 import spotifyRoutes from './routes/spotify.route.js';
 import { clerkMiddleware } from '@clerk/express';
+import cookieParser from 'cookie-parser';
+import userRoutes from './routes/user.route.js';
+
 
 dotenv.config();
 export const MONGO_URL = process.env.MONGO_URL;
@@ -38,6 +41,8 @@ app.use(
   })
 );
 
+app.use(express.json()); 
+app.use(cookieParser());
 app.use(clerkMiddleware());
 
 connectDb()
@@ -56,7 +61,7 @@ app.get('/health', (req, res) => {
 });
 
 // Include auth routes for Clerk webhooks
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', userRoutes);
 app.use('/api/period', periodTrackingRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/spotify', spotifyRoutes);

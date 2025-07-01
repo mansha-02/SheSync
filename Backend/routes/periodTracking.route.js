@@ -7,10 +7,10 @@ import {
 } from '../controllers/periodTracking.controller.js';
 import { requireAuth } from '@clerk/express';
 
-const route = Router();
+const periodTrackingRoutes = Router();
 
-route.post('/trackerdata', requireAuth(), trackerDataController);
-route.get('/periodtracking/:userId', requireAuth(), periodTrackingController);
-route.get('/waterupdate/:userId', requireAuth(), waterUpdateController);
+periodTrackingRoutes.post('/trackerdata', requireAuth(), trackerDataController);
+periodTrackingRoutes.get('/periodtracking/:userId', requireAuth(), periodTrackingController);
+periodTrackingRoutes.get('/waterupdate/:userId', requireAuth(), waterUpdateController);
 
-export default route;
+export default periodTrackingRoutes;

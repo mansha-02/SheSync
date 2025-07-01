@@ -5,9 +5,9 @@ import { getAuth } from '@clerk/express';
 export async function createPost(req, res) {
   try {
     const { title, category, content } = createPostSchema.parse(req.body);
-    const clerkId = getAuth(req).userId;
+    const { userId } = req.auth();
 
-    if (!clerkId) {
+    if (!userId) {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
@@ -20,7 +20,7 @@ export async function createPost(req, res) {
           title,
           category,
           content, 
-          author: clerkId,
+          author: userId,
         });
 
         console.log('sent the post', newPost);
@@ -38,7 +38,7 @@ export async function createPost(req, res) {
 
 export async function getPosts(req, res) {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find({limit: 10});
     if (posts.length === 0) {
       return res.status(404).json({ message: 'No posts found' });
     }
@@ -51,9 +51,9 @@ export async function getPosts(req, res) {
 export async function likePost(req, res) {
   try {
     const { id } = req.params;
-    const clerkId = getAuth(req).userId;
+    const { userId } = req.auth();
 
-    if (!clerkId) {
+    if (!userId) {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
@@ -63,11 +63,11 @@ export async function likePost(req, res) {
       return res.status(404).json({ error: 'Post not found' });
     }
 
-    if (post.likes.includes(clerkId)) {
+    if (post.likes.includes(userId)) {
       return res.status(400).json({ error: 'User already liked the post' });
     }
 
-    post.likes.push(clerkId);
+    post.likes.push(userId);
     await post.save();
 
     res.status(200).json({ message: 'Post liked successfully' });

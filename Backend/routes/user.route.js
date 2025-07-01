@@ -1,19 +1,19 @@
 import { Router } from 'express';   
 import { createUserFromClerk, getUserProfile } from '../controllers/user.controller.js';
-import checkUser from '../middlewares/auth.middlewares.js';
+import { requireAuth } from '@clerk/express'
 // import { setUser } from '../middlewares/user.middlewares.js';
 
-const router = Router();
+const userRoutes = Router();    
 
 // Webhook endpoint for Clerk user creation/updates
-router.post('/clerk-webhook', createUserFromClerk);
+userRoutes.post('/clerk-webhook', createUserFromClerk);
 
 // Get user profile (requires authentication)
-router.get('/profile/:id', checkUser, getUserProfile);
+userRoutes.get('/profile', requireAuth(), getUserProfile);
 
 // Set user in the requests
-// router.get('/profile/:id', setUser);
+// userRoutes.get('/profile/:id', setUser);
 
 
 
-export default router;
+export default userRoutes;

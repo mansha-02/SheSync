@@ -6,7 +6,7 @@ import { clerkClient, getAuth } from '@clerk/express';
 export const trackerDataController = async (req, res) => {
   const { ...trackerData } = periodTrackingSchema.parse(req.body);
   // const userId = req.user.clerkId || req.user._id;
-  const userId = getAuth(req).userId;
+  const { userId } = req.auth();
 
   try {
     const newPeriodTracking = new PeriodTracking({
@@ -28,13 +28,13 @@ export const trackerDataController = async (req, res) => {
 
 export const periodTrackingController = async (req, res) => {
   const { userId } = req.params;
-  const authenticatedUserId = getAuth(req).userId;
+  const authenticatedUserId = req.auth();
+  
+  const currentUser = await clerkClient.users.getUser(authenticatedUserId.userId);
 
-  const currentUser = await clerkClient.users.getUser(authenticatedUserId);
+  const userIdToQuery = userId === 'me' ? authenticatedUserId.userId : userId;
 
-  const userIdToQuery = userId === 'me' ? authenticatedUserId : userId;
-
-  if (userIdToQuery !== authenticatedUserId) {
+  if (userIdToQuery !== authenticatedUserId.userId) {
     return res.status(403).json({ message: 'You can only access your own data' });
   }
 
@@ -64,13 +64,13 @@ export const periodTrackingController = async (req, res) => {
 };
 export const waterUpdateController = async (req, res) => {
   const { userId } = req.params;
-  const authenticatedUserId = getAuth(req).userId;
+  const authenticatedUserId = req.auth();
 
-  const currentUser = await clerkClient.users.getUser(authenticatedUserId);
+  const currentUser = await clerkClient.users.getUser(authenticatedUserId.userId);
 
-  const userIdToQuery = userId === 'me' ? authenticatedUserId : userId;
+  const userIdToQuery = userId === 'me' ? authenticatedUserId.userId : userId;
 
-  if (userIdToQuery !== authenticatedUserId) {
+  if (userIdToQuery !== authenticatedUserId.userId) {
     return res.status(403).json({ message: 'You can only update your own data' });
   }
 

@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables from .env
 
-const router = express.Router();
+const sptifyRoutes = express.Router();
 
 // ✅ Use env variables
 const client_id = process.env.SPOTIFY_CLIENT_ID;
@@ -36,7 +36,7 @@ async function getAccessToken() {
 }
 
 // 🎧 GET /spotify/recommend?mood=happy
-router.get('/recommend', async (req, res) => {
+sptifyRoutes.get('/recommend', async (req, res) => {
   const { mood } = req.query;
   if (!mood) return res.status(400).json({ error: 'Mood is required.' });
 
@@ -59,4 +59,4 @@ router.get('/recommend', async (req, res) => {
   }
 });
 
-export default router;
+export default sptifyRoutes;

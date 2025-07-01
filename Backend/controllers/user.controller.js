@@ -1,24 +1,27 @@
+import { getAuth } from '@clerk/express';
 import { User } from '../models/user.model.js';
 import { createUserFromClerkSchema, getUserProfileSchema } from '../validators/user.zod.js';
-import { getAuth } from '@clerk/express';
-import { clerkClient } from '@clerk/express';
+import cookieParser from 'cookie-parser';
+import jwt from 'jsonwebtoken';
+
+const generateToken = (userId) => {
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+    expiresIn: '1h', // Token expires in 1 hour
+  });
+};
+
 
 export async function createUserFromClerk(req, res) {
-  const data = req.body;
+  const validatedData = createUserFromClerkSchema.parse(req.body)
 
-  const { clerkId, name, email } = createUserFromClerkSchema.parse(data);
-
-  // const clerk = await clerkClient.users.getUser(getAuth(req).userId);
-
-  // const name = clerk.firstName + ' ' + clerk.lastName;
-  // const email = clerk.emailAddresses[0].emailAddress;
-  // const clerkId = clerk.id;
+  const { clerkId, name, email } = validatedData;
 
   if (!clerkId || !name || !email) {
     return res.status(400).json({ message: 'Invalid webhook data' });
   }
 
   try {
+    // Update user if exists
     const existingUser = await User.findOneAndUpdate({clerkId}, {
       name,
       email,
@@ -32,13 +35,15 @@ export async function createUserFromClerk(req, res) {
       name,
       email,
     })
-
-    // const {token} = await clerkClient.signInTokens.createSignInToken({
-    //   userId: clerkId,
-    // });
-    // console.log('Token:', token);
-
-    return res.status(201).json({ message: 'User created successfully', newUser });
+    const token = generateToken(newUser.id)
+    
+    res.cookie('cookie', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', 
+      maxAge: 3600000,
+      sameSite: 'strict',
+    });
+    res.status(201).json({ message: 'User registered successfully!', userId: newUser.id });
 
   } catch (error) {
     console.error('Error creating/updating user from Clerk webhook:', error);
@@ -47,40 +52,24 @@ export async function createUserFromClerk(req, res) {
 }
 
 export async function getUserProfile(req, res) {
-  console.log('User profile requested for:', req.params.id);
-
   try {
-    const id = req.params.id;
-    const userId = getAuth(req).userId;
 
-    if (!id) {
-      return res.status(400).json({ message: 'Id is required' });
+    const { userId } = req.auth();
+    
+    const userProfile = await User.findOne({clerkId: userId});
+    if (!userProfile) {
+      return res.json({ message: 'User not found.' });
     }
-    // if(!clerkId.userId){
-    //   return res.status(401).json({ message: "Authentication required" });
-    // }
+    
+    res.status(200).json({
+      id: userProfile.id,
+      name: userProfile.name,
+      email: userProfile.email,
+    });
 
-    try {
-      const currentUser = await User.findById(id).where({clerkId: userId});
-
-      if (!currentUser) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-
-      return res.status(200).json({
-        user: {
-          id: currentUser.id,
-          name: currentUser.name,
-          email: currentUser.email,
-        },
-      });
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
-      return res.status(500).json({ message: 'Internal server error' });
-    }
   } catch (error) {
     console.error('Error fetching user profile:', error);
-    return res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Internal server error.' });
   }
 }
 

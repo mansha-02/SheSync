@@ -1,5 +1,8 @@
 // import { clerkClient } from '@clerk/express';
-import {  getAuth , requireAuth } from '@clerk/express';
+
+
+// import {  getAuth  } from '@clerk/express';
+
 
 // export default async function clerkAuth(req, res, next) {
 //   const token = req.headers.authorization;
@@ -34,16 +37,15 @@ import {  getAuth , requireAuth } from '@clerk/express';
 // }
 
 
-export default function checkAuth(req, res, next) {
+// export default function checkAuth(req, res, next) {
 
-  const auth = getAuth(req);
-  console.log("checking if session exists");
+//   const auth = getAuth(req);
+//   console.log("checking if session exists");
 
-  const userId = auth.userId;
-  if (!auth) {
-    console.log("session does not exist");
-    return res.status(401).json({ message: 'Authentication required' });
-  }
-  console.log("session exists");
-  return next(userId);
-}
+//   if (!auth) {
+//     console.log("session does not exist");
+//     return res.status(401).json({ message: 'Authentication required' });
+//   }
+//   console.log("session exists");
+//   return next();
+// }
