@@ -4,19 +4,19 @@ import { getAuth } from '@clerk/express';
 import { clerkClient } from '@clerk/express';
 
 export async function createUserFromClerk(req, res) {
-  // const data = req.body;
+  const data = req.body;
 
-  // const { clerkId, name, email } = createUserFromClerkSchema.parse(data);
+  const { clerkId, name, email } = createUserFromClerkSchema.parse(data);
 
-  const clerk = await clerkClient.users.getUser(getAuth(req).userId);
+  // const clerk = await clerkClient.users.getUser(getAuth(req).userId);
 
-  const name = clerk.firstName + ' ' + clerk.lastName;
-  const email = clerk.emailAddresses[0].emailAddress;
-  const clerkId = clerk.id;
+  // const name = clerk.firstName + ' ' + clerk.lastName;
+  // const email = clerk.emailAddresses[0].emailAddress;
+  // const clerkId = clerk.id;
 
-  // if (!clerkId || !name || !email) {
-  //   return res.status(400).json({ message: 'Invalid webhook data' });
-  // }
+  if (!clerkId || !name || !email) {
+    return res.status(400).json({ message: 'Invalid webhook data' });
+  }
 
   try {
     const existingUser = await User.findOneAndUpdate({clerkId}, {
