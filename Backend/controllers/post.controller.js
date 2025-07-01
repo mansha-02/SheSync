@@ -1,7 +1,6 @@
 import { Post } from '../models/post.model.js';
 import { createPostSchema, likePostSchema } from '../validators/post.zod.js';
 
-
 export async function createPost(req, res) {
   try {
     const { title, category, content } = createPostSchema.parse(req.body);
@@ -12,29 +11,28 @@ export async function createPost(req, res) {
     }
 
     try {
-        const newPost = await Post.create({
-          title,
-          category,
-          content, 
-          author: userId,
-        });
+      const newPost = await Post.create({
+        title,
+        category,
+        content,
+        author: userId,
+      });
 
-        console.log('sent the post', newPost);
-        return res.status(200).json({ message: 'Post created successfully', newPost });
+      console.log('sent the post', newPost);
+      return res.status(200).json({ message: 'Post created successfully', newPost });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: 'Failed to create post' });
     }
-
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: 'Failed to create post' });
   }
 }
 
-export async function getPosts( _, res) {
+export async function getPosts(_, res) {
   try {
-    const posts = await Post.find({limit: 10});
+    const posts = await Post.find({ limit: 10 });
     if (posts.length === 0) {
       return res.status(404).json({ message: 'No posts found' });
     }

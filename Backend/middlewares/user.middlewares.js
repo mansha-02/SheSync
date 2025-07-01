@@ -5,7 +5,6 @@
 //   return clerkAuth(req, res, next);
 // }
 
-
 // export async function setUser(req, res) {
 //   const userId = req.params.id;
 
@@ -28,15 +27,13 @@
 //   }
 // }
 
-
-
 // import jwt from 'jsonwebtoken';
 
 // const JWT_SECRET="123456";
 
 // export const authenticateToken = (req, res, next) => {
 
-//   const token = req.cookies.cookie; 
+//   const token = req.cookies.cookie;
 
 //   if (!token) {
 //     return res.status(401).json({ message: 'Unauthorized: No token provided.' });

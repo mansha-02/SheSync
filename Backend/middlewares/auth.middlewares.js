@@ -1,8 +1,6 @@
 // import { clerkClient } from '@clerk/express';
 
-
 // import {  getAuth  } from '@clerk/express';
-
 
 // export default async function clerkAuth(req, res, next) {
 //   const token = req.headers.authorization;
@@ -15,7 +13,7 @@
 //     const sessionToken = token.split(' ')[1];
 
 //     const session = await auth(req);
-  
+
 //     if (!session) {
 //       return res.status(401).json({ message: 'Invalid or expired token' });
 //     }
@@ -35,7 +33,6 @@
 //     return res.status(401).json({ message: 'Invalid or expired token' });
 //   }
 // }
-
 
 // export default function checkAuth(req, res, next) {
 

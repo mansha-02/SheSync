@@ -1,10 +1,8 @@
 import { PeriodTracking } from '../models/periodTracking.model.js';
 // import { User } from "../models/userModel.js";
 import { periodTrackingSchema } from '../validators/periodTracking.zod.js';
-import { clerkClient, getAuth } from '@clerk/express';
-import {userIdParamsSchema} from '../validators/periodTracking.zod.js';
-
-
+import { clerkClient } from '@clerk/express';
+import { userIdParamsSchema } from '../validators/periodTracking.zod.js';
 
 export const trackerDataController = async (req, res) => {
   const { ...trackerData } = periodTrackingSchema.parse(req.body);
@@ -33,7 +31,7 @@ export const periodTrackingController = async (req, res) => {
   // It only works if the Pramas id is mongoDB _id
   const { userId } = userIdParamsSchema.parse(req.params);
   const authenticatedUserId = req.auth();
-  
+
   const currentUser = await clerkClient.users.getUser(authenticatedUserId.userId);
 
   const userIdToQuery = userId === 'me' ? authenticatedUserId.userId : userId;

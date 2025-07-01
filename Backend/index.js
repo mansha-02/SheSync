@@ -10,7 +10,6 @@ import { clerkMiddleware } from '@clerk/express';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.route.js';
 
-
 dotenv.config();
 
 const app = express();
@@ -41,7 +40,7 @@ app.use(
   })
 );
 
-app.use(express.json()); 
+app.use(express.json());
 app.use(cookieParser());
 app.use(clerkMiddleware());
 
