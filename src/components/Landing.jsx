@@ -109,7 +109,8 @@ export function Landing() {
             </button> */}
           </div>
           {/* Hero Section */}
-          <Card className="!bg-pink-200 active:!bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 dark:!bg-pink-500 transform-none hover:transform-none transition-none">
+
+          <Card className="border border-pink-600 hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500">
 
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-1/2 pr-8">
@@ -122,7 +123,8 @@ export function Landing() {
 
                 <button
                   onClick={() => navigate("/Signup")}
-                  className="bg-pink-600 dark:bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-700 dark:hover:bg-pink-600 transform hover:scale-105 transition duration-300 ease-in-out"
+
+                  className="bg-pink-600 dark:bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-700 dark:hover:bg-pink-600 transform transition-all duration-300 hover:scale-105 shadow-md border dark:border-white"
 
                 >
                   Join Us!
@@ -355,7 +357,8 @@ export function Landing() {
           </Card>*/}
 
           {/* Key Benefits Section */}
-          <Card className="!bg-white dark:!bg-gray-900 focus:outline-none focus:ring focus:ring-pink-300 hover:!bg-white dark:hover:!bg-gray-900 hover:shadow-none hover:scale-100 transition-none transform-none">
+
+          <Card className="border border-pink-600 hover:bg-pink-200  focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500 ">
 
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100  ">
               Key Benefits of Using SheSync
@@ -380,8 +383,8 @@ export function Landing() {
             </div>
           </Card>
           {/* Our Mission Section */}
-          <Card className="!bg-pink-200 active:!bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 dark:!bg-pink-500 hover:!bg-pink-200 dark:hover:!bg-pink-500 hover:shadow-none hover:scale-100 transform-none transition-none" >
 
+          <Card className=" border border-pink-600 hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
             <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
               Our Mission
             </h3>
@@ -422,7 +425,9 @@ export function Landing() {
             </div>
           </Card>*/}
           {/* Testimonials */}
-          <Card className="hover:!bg-transparent hover:!shadow-none hover:!scale-100 transition-none transform-none focus:outline-none focus:ring focus:ring-pink-300">
+
+          <Card className=" border border-pink-600 hover:bg-pink-200 active:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               What Our Users Say
             </h3>
@@ -461,8 +466,9 @@ export function Landing() {
             </div>
           </Card>*/}
           {/* Success Stories */}
-          <Card className="hover:!bg-transparent hover:!shadow-none hover:!scale-100 transition-none transform-none focus:outline-none focus:ring focus:ring-pink-300">
-            <h3 className="text-2xl font-semibold mb-6 text-pink-700 dark:text-gray-100">
+
+          <Card className="border border-pink-600 bg-pink-800 text-white  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
               Success Stories
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -500,7 +506,9 @@ export function Landing() {
             </div>
           </Card>
           {/* Expert Insights */}
-          <Card className="hover:!bg-transparent hover:!shadow-none hover:!scale-100 transition-none transform-none focus:outline-none focus:ring focus:ring-pink-300">
+
+          <Card className=" border border-pink-600 hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Expert Insights
             </h3>
@@ -516,7 +524,9 @@ export function Landing() {
             </div>
           </Card>
           {/* Community Highlights */}
-          <Card className="!bg-pink-200 active:!bg-pink-700 focus:outline-none focus:ring focus:ring-pink-300 dark:!bg-pink-500 hover:!bg-pink-200 dark:hover:!bg-pink-500 hover:shadow-none hover:scale-100 transform-none transition-none">
+
+          <Card className="border border-pink-600 hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Community Highlights
             </h3>
@@ -536,7 +546,9 @@ export function Landing() {
             </div>
           </Card>
           {/* FAQ Section */}
-          {/* <Card className=" hover:!bg-transparent hover:!shadow-none hover:!scale-100 transition-none transform-none focus:outline-none focus:ring focus:ring-pink-300">
+
+          <Card className="border border-pink-600 hover:bg-pink-200  focus:outline-none focus:ring focus:ring-pink-300  dark:hover:bg-pink-500">
+
             <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Frequently Asked Questions
             </h3>
@@ -623,7 +635,7 @@ export function Landing() {
           </Card>*/}
 
           {/* CTA */}
-          <Card className=" dark:hover:bg-pink-500  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
+          <Card className=" border #D63384 dark:hover:bg-pink-500  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 ">
             <div className="text-center">
               <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                 Ready to Take Control of Your Health?
@@ -634,15 +646,17 @@ export function Landing() {
               </p>
               <button
                 onClick={() => navigate("/Signup")}
-                className="bg-pink-600 dark:bg-pink-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-pink-700 dark:hover:bg-pink-600 transition-colors"
+                className="bg-pink-600 dark:bg-pink-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-pink-700 dark:hover:bg-pink-600 shadow-md transform transition-all duration-300 hover:scale-105 border dark:border-white"
               >
                 Sign Up Now
               </button>
             </div>
           </Card>
           {/* Footer */}
-          <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 focus:outline-none focus:ring">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+          <footer className=" border border-pink-600 mt-12 pt-8 rounded  hover:bg-pink-200 active:bg-pink-100 focus:outline-none focus:ring focus:ring-pink-300 dark:hover:bg-pink-500">
+            <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-between gap-10">
+
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   Company
@@ -651,7 +665,8 @@ export function Landing() {
                   <li>
                     <button
                       onClick={() => navigate("/symptomsanalyzer")}
-                      className="text-gray-100 dark:text-white hover:text-pink-600 dark:hover:text-pink-400"
+                      className="text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+
                     >
                       About Us
                     </button>
@@ -659,7 +674,9 @@ export function Landing() {
                   <li>
                     <button
                       onClick={() => navigate("/parents")}
-                      className="text-gray-100 dark:text-white hover:text-pink-600 dark:hover:text-pink-400"
+
+                      className="text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+
                     >
                       Careers
                     </button>
@@ -667,10 +684,10 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Press
-                    </a>
+                    </a >
                   </li>
                 </ul>
               </div>
@@ -683,7 +700,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Blog
                     </a>
@@ -691,7 +708,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Help Center
                     </a>
@@ -699,7 +716,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Community
                     </a>
@@ -715,7 +732,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Privacy Policy
                     </a>
@@ -723,7 +740,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Terms of Service
                     </a>
@@ -731,7 +748,7 @@ export function Landing() {
                   <li>
                     <a
                       href="#"
-                      className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Cookie Policy
                     </a>
@@ -742,38 +759,43 @@ export function Landing() {
                 <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   Connect
                 </h4>
-                <div className="flex space-x-4">
-                  <a
-                    href="https://x.com"
-                    className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <FaSquareXTwitter size={24} />
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <FaFacebookSquare size={24} />
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    className="text-gray-700 dark:text-gray-700 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <FaSquareInstagram size={24} />
-                  </a>
-                </div>
+
+                <ul className="space-y-2">
+                  <li>
+                    <a
+                      href="https://x.com"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+                    >
+                      Twitter
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://facebook.com"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+                    >
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://instagram.com"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+                    >
+                      Instagram
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
-              <p className="text-gray-700 dark:text-gray-100">
-                TEAM: WEB PIONEERS
-              </p>
-              <p className="text-gray-700 dark:text-gray-100">
-                &copy; 2025 SheSync. All rights reserved.
-              </p>
+            <div className="w-full mt-8 p-4 border-t-1 border-pink-800 dark:border-pink-500">
+              <div className="max-w-7xl mx-auto px-4 text-center">
+                <p className="text-gray-700 dark:text-gray-100 font-semibold">TEAM: WEB PIONEERS</p>
+                <p className="text-gray-700 dark:text-gray-100 text-sm">
+                  &copy; 2025 SheSync. All rights reserved.
+                </p>
+              </div>
+
             </div>
           </footer>
         </div>
@@ -836,9 +858,9 @@ const StepCard = ({ number, title, description }) => {
 
 const TestimonialCard = ({ quote, author }) => {
   return (
-    <div className="bg-pink-100 dark:bg-pink-400 p-4 rounded-lg">
-      <p className="italic mb-2 text-gray-800 dark:text-gray-300">"{quote}"</p>
-      <p className="font-semibold text-right text-gray-900 dark:text-gray-100">
+    <div className="bg-pink-100 border border-pink-700 dark:border-pink-700 p-4 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
+      <p className="italic mb-2 text-gray-800 dark:text-gray-300 dark:text-pink-400">"{quote}"</p>
+      <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {author}
       </p>
     </div>
@@ -861,7 +883,8 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 dark:border-gray-700 p-4 bg-pink-200 rounded-lg">
+    <div className="border-b border-pink-500 dark:border-gray-700 pb-4">
+
       <button
         className="flex justify-between items-center w-full text-left"
         onClick={() => setIsOpen(!isOpen)}
@@ -880,7 +903,9 @@ const FAQItem = ({ question, answer }) => {
 
 const SuccessStoryCard = ({ name, story, improvement }) => {
   return (
-    <div className="bg-pink-50 dark:bg-pink-200 p-6 rounded-lg border border-pink-700 dark:border-pink-700 borderw-4">
+
+    <div className="bg-pink-50 dark:bg-pink-50 p-6 rounded-lg border border-pink-700 dark:border-pink-700 borderw-4 transform transition-all duration-300 hover:scale-105 shadow-md">
+
       <h4 className="text-lg font-semibold mb-2 text-pink-600 dark:text-pink-800">
         {name}
       </h4>
@@ -897,9 +922,9 @@ const SuccessStoryCard = ({ name, story, improvement }) => {
 
 const ExpertInsightCard = ({ expert, insight }) => {
   return (
-    <div className="bg-pink-100 dark:bg-pink-400 p-6 rounded-lg">
-      <p className="text-gray-800 dark:text-gray-300 mb-4">"{insight}"</p>
-      <p className="font-semibold text-right text-gray-900 dark:text-gray-100">
+    <div className="border border-pink-700 dark:border-pink-700 bg-pink-100 dark:bg-pink-100 p-6 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
+      <p className="text-gray-800 dark:text-gray-300 mb-4 dark:text-pink-400">"{insight}"</p>
+      <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {expert}
       </p>
     </div>
@@ -908,11 +933,13 @@ const ExpertInsightCard = ({ expert, insight }) => {
 
 const CommunityHighlightCard = ({ title, description }) => {
   return (
-    <div className="border border-gray-200 dark:border-gray-700 dark:bg-[#111827] rounded-lg p-4 bg-pink-50">
-      <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
+
+    <div className="bg-pink-100 border border-pink-700 dark:border-pink-700  rounded-lg p-4 transform transition-all duration-300 hover:scale-105 shadow-md">
+      <h4 className="text-lg font-semibold mb-2 text-gray-900 dark:text-pink-800">
+
         {title}
       </h4>
-      <p className="text-gray-700 dark:text-gray-300">{description}</p>
+      <p className="text-gray-700 dark:text-pink-400">{description}</p>
     </div>
   );
 };
