@@ -306,12 +306,12 @@ const NotificationsPanel = ({ notifications, onClose }) => (
     initial={{ opacity: 0, y: -20 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
-    className="absolute right-0 top-16 w-96 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-pink-100/20 dark:border-pink-900/20 z-50"
+    className="absolute right-0 top-16 w-96 rounded-lg shadow-xl z-50 bg-pink-50 dark:bg-gray-800 border border-pink-200 dark:border-pink-900/20"
   >
-    <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+    <div className="p-4 border-b border-pink-200 dark:border-gray-700">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Notifications</h3>
-        <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+        <h3 className="text-lg font-semibold text-pink-700 dark:text-white">Notifications</h3>
+        <button onClick={onClose} className="text-pink-500 hover:text-pink-700 dark:text-gray-400 dark:hover:text-white">
           <X className="h-5 w-5" />
         </button>
       </div>
@@ -320,15 +320,15 @@ const NotificationsPanel = ({ notifications, onClose }) => (
       {notifications.map((notification) => (
         <div
           key={notification.id}
-          className="p-4 border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+          className="p-4 border-b border-pink-100 dark:border-gray-700 hover:bg-pink-100 dark:hover:bg-gray-700 transition-colors"
         >
           <div className="flex items-start space-x-3">
             {notification.type === 'medication' && <Pill className="h-5 w-5 text-blue-500" />}
             {notification.type === 'appointment' && <Calendar className="h-5 w-5 text-green-500" />}
-            {notification.type === 'period' && <Heart className="h-5 w-5 text-pink-500" />}
+            {notification.type === 'period' && <Heart className="h-5 w-5 text-pink-600" />}
             <div>
-              <p className="text-sm font-medium">{notification.message}</p>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-sm font-medium text-pink-800 dark:text-gray-100">{notification.message}</p>
+              <p className="text-xs text-pink-500 dark:text-gray-400 mt-1">
                 {notification.time || notification.date}
               </p>
             </div>
