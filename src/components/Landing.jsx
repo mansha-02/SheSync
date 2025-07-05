@@ -146,7 +146,6 @@ export function Landing() {
                 </p>
               </div>
 
-
               <div onClick={() => navigate("/blogs")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <GraduationCap className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">Education Hub</h4>
@@ -154,8 +153,7 @@ export function Landing() {
                   Learn menstrual health through interactive blogs, modules, and rewards— stigma-free and fun!
                 </p>
               </div>
-
-
+              
               <div onClick={() => navigate("/Ecom")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 hover:bg-pink-200 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
                 <ShoppingBag className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">Curated Shop</h4>
@@ -163,7 +161,6 @@ export function Landing() {
                   Discover eco-friendly products and redeem learning points for sustainable choices.
                 </p>
               </div>
-
 
               <div onClick={() => navigate("/tracker")} className="flex hover:bg-pink-200 flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
                 <ActivitySquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
@@ -173,7 +170,6 @@ export function Landing() {
                 </p>
               </div>
 
-
               <div onClick={() => navigate("/consultations")} className="hover:bg-pink-200 flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
                 <Stethoscope className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">Expert Consultations</h4>
@@ -182,7 +178,6 @@ export function Landing() {
                 </p>
               </div>
 
-
               <div onClick={() => navigate("/ChatBot")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <Bot className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">Eve</h4>
@@ -190,7 +185,6 @@ export function Landing() {
                   Get AI personalized insights, symptom analysis, and timely reminders tailored to your unique menstrual health needs.
                 </p>
               </div>
-
 
               <div onClick={() => navigate("/parents")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <UsersRound className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
@@ -202,11 +196,11 @@ export function Landing() {
 
               <div onClick={() => navigate("/symptomsanalyzer")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <HeartPulse className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
+                <h4 className="text-lg font-semibold text-pink-600">Health Lens</h4>
                 <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
                   An AI-powered tool to analyze symptoms, offer community insights, and provide actionable health advice.
                 </p>
               </div>
-
 
               <div onClick={() => navigate("/forums")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <MessageSquare className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
@@ -216,7 +210,6 @@ export function Landing() {
                 </p>
               </div>
 
-
               <div onClick={() => navigate("/partner")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <ClipboardList className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">PCOS Diagnosis</h4>
@@ -225,7 +218,6 @@ export function Landing() {
                 </p>
               </div>
 
-
               <div onClick={() => window.open("https://www.hercircle.in/engage/wellness/reproductive-health/5-organisations-working-towards-eradicating-period-poverty-2239.html", "_blank")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <Handshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">NGO's</h4>
@@ -233,7 +225,6 @@ export function Landing() {
                   Discover and connect with NGOs dedicated to women's health, empowerment, and well-being. Together, we can build a supportive community for women everywhere.
                 </p>
               </div>
-
 
               <div onClick={() => window.open("https://thepadproject.org/donate/", "_blank")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-pink-200 cursor-pointer">
                 <HeartHandshake className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
