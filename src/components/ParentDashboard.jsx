@@ -1741,7 +1741,7 @@ export function ParentDashboard() {
       <SideBar
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
-        activeLink={9}
+        activeLink={10}
       />
       {width > 816 && (
         <button
