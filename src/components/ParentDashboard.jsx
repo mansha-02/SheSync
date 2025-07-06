@@ -451,8 +451,13 @@ const NotificationsPanel = ({ notifications, onClose }) => (
   >
     <div className="p-4 border-b border-pink-200 dark:border-gray-700">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold text-pink-700 dark:text-white">Notifications</h3>
-        <button onClick={onClose} className="text-pink-500 hover:text-pink-700 dark:text-gray-400 dark:hover:text-white">
+        <h3 className="text-lg font-semibold text-pink-700 dark:text-white">
+          Notifications
+        </h3>
+        <button
+          onClick={onClose}
+          className="text-pink-500 hover:text-pink-700 dark:text-gray-400 dark:hover:text-white"
+        >
           <X className="h-5 w-5" />
         </button>
       </div>
@@ -464,11 +469,6 @@ const NotificationsPanel = ({ notifications, onClose }) => (
           className="p-4 border-b border-pink-100 dark:border-gray-700 hover:bg-pink-100 dark:hover:bg-gray-700 transition-colors"
         >
           <div className="flex items-start space-x-3">
-<<<<<<< HEAD
-            {notification.type === 'medication' && <Pill className="h-5 w-5 text-blue-500" />}
-            {notification.type === 'appointment' && <Calendar className="h-5 w-5 text-green-500" />}
-            {notification.type === 'period' && <Heart className="h-5 w-5 text-pink-600" />}
-=======
             {notification.type === "medication" && (
               <Pill className="h-5 w-5 text-blue-500" />
             )}
@@ -478,9 +478,10 @@ const NotificationsPanel = ({ notifications, onClose }) => (
             {notification.type === "period" && (
               <Heart className="h-5 w-5 text-pink-500" />
             )}
->>>>>>> 05c635e (UI improvements for light/dark mode consistency)
             <div>
-              <p className="text-sm font-medium text-pink-800 dark:text-gray-100">{notification.message}</p>
+              <p className="text-sm font-medium text-pink-800 dark:text-gray-100">
+                {notification.message}
+              </p>
               <p className="text-xs text-pink-500 dark:text-gray-400 mt-1">
                 {notification.time || notification.date}
               </p>
@@ -1750,24 +1751,28 @@ export function ParentDashboard() {
 
   return (
     <div className={`flex h-screen dark:bg-[#111827]`}>
-        <SideBar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} activeLink={10}/>
-          {width > 816 && (
-            <button
-            onClick={toggleSidebar}
-            className="fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md  transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
-            style={{
-              transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
-            }}
-            aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
-          >
-            <ChevronRight
-              size={14}
-              className={`transition-transform duration-300 block m-auto ${
-                sidebarVisible ? "rotate-180" : "rotate-0"
-              }`}
-            />  
-          </button>
-          )}
+      <SideBar
+        sidebarVisible={sidebarVisible}
+        setSidebarVisible={setSidebarVisible}
+        activeLink={10}
+      />
+      {width > 816 && (
+        <button
+          onClick={toggleSidebar}
+          className="fixed left-0 top-0 w-10 z-50 p-2 bg-pink-600 text-white rounded-r-md  transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+          style={{
+            transform: sidebarVisible ? "translateX(256px)" : "translateX(0)",
+          }}
+          aria-label={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
+        >
+          <ChevronRight
+            size={14}
+            className={`transition-transform duration-300 block m-auto ${
+              sidebarVisible ? "rotate-180" : "rotate-0"
+            }`}
+          />
+        </button>
+      )}
 
       <main
         className={`flex-1 p-6 overflow-auto bg-white dark:bg-gray-900 transition-all duration-300 ease-in-out ${
