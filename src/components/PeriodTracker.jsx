@@ -73,13 +73,13 @@ export function PeriodTracker() {
   const { isLoaded, isSignedIn } = useAuth();
   const { user } = useUser();
   const { width } = useScreenSize();
-  
+
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [isLoaded, isSignedIn, navigate]);
-  
+
   const [sidebarVisible, setSideBarVisible] = useState(true);
   const [cycleDuration, setCycleDuration] = useState("");
   const [lastPeriodStart, setLastPeriodStart] = useState("");
@@ -114,14 +114,14 @@ export function PeriodTracker() {
       navigate("/login");
     }
   }, [isLoaded, isSignedIn, navigate]);
-  
+
   const handleWaterIntakeUpdate = async () => {
     if (!isSignedIn || !user) {
       alert("You must be logged in to update water intake");
-      navigate('/login');
+      navigate("/login");
       return;
     }
-    
+
     try {
       const response = await axios.get(
         `${server_url}/api/period/waterupdate/me`,
@@ -219,13 +219,13 @@ export function PeriodTracker() {
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-    
+
     if (!isSignedIn || !user) {
       alert("You must be logged in to submit data");
-      navigate('/login');
+      navigate("/login");
       return;
     }
-    
+
     const submissionData = {
       userId: user.id,
       cycleDuration,
@@ -244,7 +244,7 @@ export function PeriodTracker() {
 
     try {
       const token = await user.getToken();
-      
+
       try {
         const response = await axios.post(
           `${server_url}/api/period/trackerdata`,
@@ -252,7 +252,7 @@ export function PeriodTracker() {
           {
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -261,7 +261,10 @@ export function PeriodTracker() {
         alert("Data submitted successfully!");
         return;
       } catch (primaryError) {
-        console.warn("Primary server failed, attempting local fallback:", primaryError);
+        console.warn(
+          "Primary server failed, attempting local fallback:",
+          primaryError
+        );
       }
 
       const localResponse = await axios.post(
@@ -270,11 +273,14 @@ export function PeriodTracker() {
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log("Data submitted successfully via local server:", localResponse.data);
+      console.log(
+        "Data submitted successfully via local server:",
+        localResponse.data
+      );
       setShowHealthTips(true);
       alert("Data submitted successfully!");
     } catch (error) {
@@ -724,11 +730,8 @@ export function PeriodTracker() {
   return (
     <div className="flex min-h-screen bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
       <SideBar
-        visible={sidebarVisible}
-        toggleSidebar={toggleSidebar}
+        sidebarVisible={sidebarVisible}
         setSidebarVisible={setSideBarVisible}
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
         activeLink={4}
       />
 
@@ -782,8 +785,16 @@ export function PeriodTracker() {
           {/* Sections */}
           {renderSection("Cycle Information", cycleInfoContent, "cycleInfo")}
           {renderSection("Mood Tracking", moodTrackingContent, "moodTracking")}
-          {renderSection("Symptom Tracking", symptomTrackingContent, "symptomTracking")}
-          {renderSection("Sleep Tracking", sleepTrackingContent, "sleepTracking")}
+          {renderSection(
+            "Symptom Tracking",
+            symptomTrackingContent,
+            "symptomTracking"
+          )}
+          {renderSection(
+            "Sleep Tracking",
+            sleepTrackingContent,
+            "sleepTracking"
+          )}
           {renderSection("Health Tips", healthTipsContent, "healthTips")}
 
           {/* Submit Button */}

@@ -13,15 +13,15 @@ const server_url = import.meta.env.VITE_SERVER_URL || render_url;
 
 export function ProtectedRouteWrapper({ Component }) {
   const { isLoaded, isSignedIn } = useAuth();
-  
+
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
-  
+
   if (!isSignedIn) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return <Component />;
 }
 
