@@ -643,7 +643,7 @@ export function Forum() {
       <div className="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={() => toggleSolved(post.id)}
-          className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+          className="p-1 rounded-full bg-gray-200 dark:bg-gray-900"
         >
           {solvedPosts.includes(post.id) ? (
             <CheckCircle className="h-5 w-5 text-green-500" />
@@ -653,7 +653,7 @@ export function Forum() {
         </button>
         <button
           onClick={() => handleBookmark(post.id)}
-          className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900"
+          className="p-1 rounded-full bg-gray-200 dark:bg-gray-900"
         >
           <Bookmark
             className={`h-5 w-5 ${
@@ -733,37 +733,39 @@ export function Forum() {
         <div className="flex items-center space-x-4">
           <button
             onClick={() => handleLike(post.id)}
-            className="flex items-center hover:text-pink-600 transition-colors"
+            className="flex items-center px-3 py-1 rounded-md !bg-pink-200 text-pink-700 dark:!bg-gray-700 dark:text-gray-300 transition-colors"
           >
             <Heart
               className={`h-5 w-5 mr-1 ${
-                post.likes > 0 ? "text-pink-600 fill-current" : ""
+                post.likes > 0 ? "text-pink-600 dark:text-pink-400 fill-current" : ""
               }`}
             />
             {post.likes} likes
           </button>
-          <button className="flex items-center text-gray-500 hover:text-gray-700">
+
+          {/* Comments Button */}
+          <button className="flex items-center px-3 py-1 rounded-md !bg-pink-200 text-pink-700 dark:!bg-gray-700 dark:text-gray-300 transition-colors">
             <MessageSquare className="h-5 w-5 mr-1" />
             {post.comments} comments
           </button>
-          <div className="flex items-center space-x-1">
-            {Object.entries(postReactions[post.id] || {}).map(
-              ([type, count]) => (
-                <span key={type} className="text-sm">
-                  {type} {count}
-                </span>
-              )
-            )}
+
+          {/* Reactions */}
+          <div className="flex items-center space-x-1 text-gray-600 dark:text-gray-300">
+            {Object.entries(postReactions[post.id] || {}).map(([type, count]) => (
+              <span key={type} className="text-sm flex items-center">
+                {type} {count}
+              </span>
+            ))}
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-full">
-            <Share2 className="h-4 w-4" />
+          <button className="p-2 !bg-gray-200 hover:bg-gray-300 dark:!bg-gray-700 rounded-full transition-colors">
+            <Share2 className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           </button>
-          <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-full">
-            <Flag className="h-4 w-4" />
+          <button className="p-2 !bg-gray-200 hover:bg-gray-300 dark:!bg-gray-700 rounded-full transition-colors">
+            <Flag className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           </button>
-          <span className="flex items-center text-sm text-gray-500">
+          <span className="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <Eye className="h-4 w-4 mr-1" />
             {post.views || 0}
           </span>
@@ -775,7 +777,7 @@ export function Forum() {
           <button
             key={reaction.emoji}
             onClick={() => handleReaction(post.id, reaction.emoji)}
-            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-full"
+            className="p-1 bg-gray-300 dark:bg-gray-900 rounded-full"
             title={reaction.label}
           >
             <span className="text-lg">{reaction.emoji}</span>
