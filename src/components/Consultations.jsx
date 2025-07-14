@@ -237,6 +237,11 @@ export function Consultations() {
     }
   };
 
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   // UI Components
   const SidebarLink = ({ icon, label, onClick, active = false }) => {
     return (
@@ -361,7 +366,7 @@ export function Consultations() {
 
   const FilterSection = ({ filters, setFilters, showFilters }) => (
     <motion.div
-      initial={{ height: 0, opacity: 0 }}
+      initial={!hasMounted ? { height: 0, opacity: 0 } : false}
       animate={{
         height: showFilters ? "auto" : 0,
         opacity: showFilters ? 1 : 0,
