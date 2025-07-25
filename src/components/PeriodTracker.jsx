@@ -727,7 +727,7 @@ export function PeriodTracker() {
       <div className={`flex-1 p-6 lg:p-8 ${sidebarVisible && width > 816 ? "ml-64" : "ml-0"} w-full max-w-full transition-all duration-300 ease-in-out`}>
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className={`text-2xl font-bold text-gray-900 dark:text-white ${sidebarVisible && width > 816 ? "pl-0" : "pl-10"}`}>
               Period Tracker
             </h1>
             {width < 816 && (
