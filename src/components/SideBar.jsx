@@ -232,7 +232,9 @@ export default function SideBar({
           <SidebarLink
             icon={<Gamepad2 size={20} />}
             label="Bliss"
-            onClick={() => navigate("/bliss")}
+            onClick={() =>
+              navigate("/bliss")
+            }
             active={active[14]}
           />
           <SidebarLink
