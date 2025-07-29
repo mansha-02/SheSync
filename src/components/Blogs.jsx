@@ -312,8 +312,26 @@ export function Blogs() {
   };
 
   const handleShare = (postId) => {
-    // Implement sharing functionality here
-    console.log(`Sharing post ${postId}`);
+    const articleUrl = `${window.location.origin}/blogs`;
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: 'Check out this article!',
+          text: 'Here’s something interesting I found:',
+          url: articleUrl,
+        })
+        .then(() => console.log('Article shared successfully!'))
+        .catch((error) => console.error('Error sharing article:', error));
+    } else {
+      navigator.clipboard.writeText(articleUrl)
+        .then(() => {
+          console.log('Link copied to clipboard!');
+        })
+        .catch((err) => {
+          console.error('Clipboard write failed:', err);
+        });
+    }
   };
 
   const handleCardClick = (post) => {
@@ -370,7 +388,7 @@ export function Blogs() {
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
           <div className="flex justify-between items-center">
-            <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400">
+            <h2 className={`text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 dark:from-pink-400 dark:to-purple-400 ${sidebarVisible && width > 816 ? "pl-0" : "pl-10"}`}>
               Education Hub
             </h2>
           </div>

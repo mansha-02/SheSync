@@ -19,10 +19,18 @@ function deepCopy(board) {
 
 function isSafe(board, row, col, num) {
     for (let x = 0; x < 9; x++) {
-        if (board[row][x] === num || board[x][col] === num) return false;
-        const boxRow = 3 * Math.floor(row / 3) + Math.floor(x / 3);
-        const boxCol = 3 * Math.floor(col / 3) + (x % 3);
-        if (board[boxRow][boxCol] === num) return false;
+        if (board[row][x] === num || board[x][col] === num) {
+            return false;
+        }
+    }
+    const startRow = 3 * Math.floor(row / 3);
+    const startCol = 3 * Math.floor(col / 3);
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[startRow + i][startCol + j] === num) {
+                return false;
+            }
+        }
     }
     return true;
 }
@@ -45,11 +53,18 @@ function solveSudoku(board) {
     return true;
 }
 
+function fillBoardRandomly(board) {
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5);
+    for (let i = 0; i < 9; i++) {
+        board[0][i] = nums[i];
+    }
+    solveSudoku(board);
+}
+
 function generateSudoku(full = false, clues = 30) {
     const board = generateEmptyBoard();
-    solveSudoku(board);
+    fillBoardRandomly(board);
     if (full) return board;
-
     const puzzle = deepCopy(board);
     let removed = 81 - clues;
     while (removed > 0) {
