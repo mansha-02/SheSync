@@ -1040,7 +1040,7 @@ export function SymptomAnalysis() {
       <SideBar
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
-        activeLink={8}
+        activeLink={9}
       />
       {width > 816 && (
         <button
