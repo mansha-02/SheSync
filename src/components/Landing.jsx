@@ -663,23 +663,20 @@ export function Landing() {
                 </h4>
                 <ul className="space-y-2">
                   <li>
-                    <button
-                      onClick={() => navigate("/symptomsanalyzer")}
-                      className="text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
-
+                    <a
+                      href="#"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       About Us
-                    </button>
+                    </a >
                   </li>
                   <li>
-                    <button
-                      onClick={() => navigate("/parents")}
-
-                      className="text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
-
+                    <a
+                      href="#"
+                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
                     >
                       Careers
-                    </button>
+                    </a >
                   </li>
                   <li>
                     <a
@@ -859,7 +856,7 @@ const StepCard = ({ number, title, description }) => {
 const TestimonialCard = ({ quote, author }) => {
   return (
     <div className="bg-pink-100 border border-pink-700 dark:border-pink-700 p-4 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
-      <p className="italic mb-2 text-gray-800 dark:text-gray-300 dark:text-pink-400">"{quote}"</p>
+      <p className="italic mb-2 text-gray-800 dark:text-pink-400">"{quote}"</p>
       <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {author}
       </p>
@@ -923,7 +920,7 @@ const SuccessStoryCard = ({ name, story, improvement }) => {
 const ExpertInsightCard = ({ expert, insight }) => {
   return (
     <div className="border border-pink-700 dark:border-pink-700 bg-pink-100 dark:bg-pink-100 p-6 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
-      <p className="text-gray-800 dark:text-gray-300 mb-4 dark:text-pink-400">"{insight}"</p>
+      <p className="text-gray-800 dark:text-pink-400">"{insight}"</p>
       <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {expert}
       </p>
