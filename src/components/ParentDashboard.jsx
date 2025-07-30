@@ -1713,11 +1713,6 @@ export function ParentDashboard() {
             </h2>
           </motion.div>
           <div className="flex items-center space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full bg-pink-50 hover:bg-pink-100 dark:bg-pink-900/30 text-pink-400"
-            ></motion.button>
             <div className="relative">
               <motion.button
                 whileHover={{ scale: 1.05 }}
