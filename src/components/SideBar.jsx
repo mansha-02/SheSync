@@ -264,7 +264,7 @@ export default function SideBar({
             onClick={() =>
               navigate("/diet-plan")
             }
-            active={active[16]}
+            active={active[17]}
           />
         </div>
       </aside>
