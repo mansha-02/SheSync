@@ -61,7 +61,7 @@ export default function Bliss() {
       <Sidebar
         sidebarVisible={sidebarVisible}
         setSidebarVisible={setSidebarVisible}
-        activeLink={13}
+        activeLink={14}
       />
 
       {/* Toggle Button (only on laptops) */}

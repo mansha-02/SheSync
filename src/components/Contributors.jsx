@@ -59,7 +59,7 @@ const Contributors = () => {
             <SideBar
                 sidebarVisible={sidebarVisible}
                 setSidebarVisible={setSidebarVisible}
-                activeLink={7}
+                activeLink={16}
             />
 
             {width > 816 && (
