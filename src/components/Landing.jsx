@@ -92,8 +92,8 @@ export function Landing() {
           {/* Header */}
           <div className="flex justify-between items-center">
             <h1
-              className="text-3xl font-bold text-pink-600 dark:text-pink-400 
-            "
+              className={`text-3xl font-bold text-pink-600 dark:text-pink-400 ${sidebarVisible && width > 816 ? "pl-0" : "pl-11"}
+            `}
             >
               Welcome to SheSync
             </h1>
@@ -153,7 +153,7 @@ export function Landing() {
                   Learn menstrual health through interactive blogs, modules, and rewards— stigma-free and fun!
                 </p>
               </div>
-
+              
               <div onClick={() => navigate("/Ecom")} className="flex flex-col items-start p-6 bg-white dark:bg-gray-800 hover:bg-pink-200 rounded-lg shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer">
                 <ShoppingBag className="h-8 w-8 text-pink-600 dark:text-pink-400 mb-4" />
                 <h4 className="text-lg font-semibold text-pink-600">Curated Shop</h4>
@@ -860,7 +860,7 @@ const StepCard = ({ number, title, description }) => {
 const TestimonialCard = ({ quote, author }) => {
   return (
     <div className="bg-pink-100 border border-pink-700 dark:border-pink-700 p-4 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
-      <p className="italic mb-2 text-gray-800 dark:text-gray-300 dark:text-pink-400">"{quote}"</p>
+      <p className="italic mb-2 text-gray-800 dark:text-pink-400">"{quote}"</p>
       <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {author}
       </p>
@@ -924,7 +924,7 @@ const SuccessStoryCard = ({ name, story, improvement }) => {
 const ExpertInsightCard = ({ expert, insight }) => {
   return (
     <div className="border border-pink-700 dark:border-pink-700 bg-pink-100 dark:bg-pink-100 p-6 rounded-lg transform transition-all duration-300 hover:scale-105 shadow-md">
-      <p className="text-gray-800 dark:text-gray-300 mb-4 dark:text-pink-400">"{insight}"</p>
+      <p className="text-gray-800 dark:text-pink-400">"{insight}"</p>
       <p className="font-semibold text-right text-gray-900 dark:text-pink-800">
         - {expert}
       </p>

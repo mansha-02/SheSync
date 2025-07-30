@@ -37,7 +37,20 @@ const OvulationCalculator = () => {
       return;
     }
 
+    const today = new Date();
     const start = new Date(startDate);
+    const fiveYearsAgo = addDays(today, -365 * 5);
+
+    if (start > today || start < fiveYearsAgo) {
+      alert("Start date must be within the past 5 years and not in the future.");
+      return;
+    }
+
+    if (isNaN(cycleLength) || cycleLength < 20 || cycleLength > 40) {
+      alert("Cycle length must be between 20 and 40 days.");
+      return;
+    }
+
     const ovulationDate = addDays(start, cycleLength - 14);
     const fertileStart = addDays(ovulationDate, -4);
     const fertileEnd = addDays(ovulationDate, 1);
@@ -52,7 +65,6 @@ const OvulationCalculator = () => {
       nextPeriod: format(nextPeriod, "EEE MMM dd yyyy"),
     });
 
-    const today = new Date();
     const gestationalAgeInDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
     const gestationalWeeks = Math.floor(gestationalAgeInDays / 7);
     const gestationalDays = gestationalAgeInDays % 7;
@@ -140,6 +152,8 @@ const OvulationCalculator = () => {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
+              max={format(new Date(), "yyyy-MM-dd")}
+              min={format(addDays(new Date(), -365 * 5), "yyyy-MM-dd")}
               className="w-full p-2 rounded bg-white text-black dark:bg-gray-500 dark:text-white"
             />
           </div>
