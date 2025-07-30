@@ -24,6 +24,7 @@ import MoodMap from "../components/Bliss/games/Moodmap";
 import SimonGame from "../components/Bliss/games/SimonGame";
 import Contributors from "../components/Contributors";
 import DietPlan from "../components/Diet-plan";
+import Hangman from "../components/Bliss/games/Hangman";
 
 export const appRoutes = [
   {
@@ -113,6 +114,10 @@ export const appRoutes = [
   {
     path: "/bliss/mood-map",
     element: <ProtectedRouteWrapper Component={MoodMap} />,
+  },
+  {
+    path: "/bliss/Hangman",
+    element: <ProtectedRouteWrapper Component={Hangman} />,
   },
   {
     path: "/bliss/simon",
