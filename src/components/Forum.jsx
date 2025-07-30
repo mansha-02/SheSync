@@ -205,8 +205,8 @@ const CreatePost = ({ isOpen, onClose, onSubmit, forumCategories }) => {
             placeholder="Post Title"
             value={formData.title}
             onChange={handleChange}
-            className="w-full p-3 border border-pink-100 rounded-xl 
-                     bg-white text-gray-700 
+            className="w-full p-3 border border-pink-100 rounded-xl
+                     bg-white text-gray-700
                      placeholder-gray-400
                      focus:ring-2 focus:ring-pink-200 focus:border-transparent
                      transition-all duration-200"
@@ -217,7 +217,7 @@ const CreatePost = ({ isOpen, onClose, onSubmit, forumCategories }) => {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            className="w-full p-3 border border-pink-100 rounded-xl 
+            className="w-full p-3 border border-pink-100 rounded-xl
                      bg-white text-gray-700
                      focus:ring-2 focus:ring-pink-200 focus:border-transparent
                      transition-all duration-200"
@@ -308,7 +308,7 @@ const CreatePost = ({ isOpen, onClose, onSubmit, forumCategories }) => {
                   setImagePreview(null);
                   setFormData((prev) => ({ ...prev, image: null }));
                 }}
-                className="absolute top-2 right-2 p-1.5 bg-white/80 hover:bg-white 
+                className="absolute top-2 right-2 p-1.5 bg-white/80 hover:bg-white
                          text-gray-600 rounded-full transition-all duration-200"
               >
                 <X className="h-4 w-4" />
@@ -321,8 +321,8 @@ const CreatePost = ({ isOpen, onClose, onSubmit, forumCategories }) => {
             placeholder="Write your post content..."
             value={formData.content}
             onChange={handleChange}
-            className="w-full p-4 min-h-[200px] border border-pink-100 rounded-xl 
-                     bg-white text-gray-700 
+            className="w-full p-4 min-h-[200px] border border-pink-100 rounded-xl
+                     bg-white text-gray-700
                      placeholder-gray-400
                      focus:ring-2 focus:ring-pink-200 focus:border-transparent
                      transition-all duration-200
@@ -344,7 +344,7 @@ const CreatePost = ({ isOpen, onClose, onSubmit, forumCategories }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-pink-300 
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-pink-400 to-pink-300
                        text-white font-medium shadow-sm
                        hover:shadow-md hover:scale-[1.02]
                        transition-all duration-200 disabled:opacity-50
@@ -607,31 +607,33 @@ export function Forum() {
   };
 
   const ProfileMenu = () => (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 border border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 bg-white"
-    >
-      <button className="flex items-center w-full px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800">
-        <User className="mr-3 h-5 w-5" /> Profile
-      </button>
-      <button className="flex items-center w-full px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800">
-        <Bookmark className="mr-3 h-5 w-5" /> Bookmarks
-      </button>
-      <button className="flex items-center w-full px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800">
-        <CheckCircle className="mr-3 h-5 w-5" /> My Solutions
-      </button>
-      <button className="flex items-center w-full px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800">
-        <Mail className="mr-3 h-5 w-5" /> Messages
-      </button>
-      <button className="flex items-center w-full px-4 py-2 text-zinc-800 hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800">
-        <Lock className="mr-3 h-5 w-5" /> Privacy Settings
-      </button>
-      <button className="flex items-center w-full px-4 py-2 text-pink-600 hover:text-pink-700 dark:text-pink-400 dark:hover:text-pink-300">
-        <XCircle className="mr-3 h-5 w-5" /> Logout
-      </button>
-    </motion.div>
+ <motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -10 }}
+  className="absolute right-0 mt-2 w-52 rounded-xl shadow-lg py-1 bg-pink-600 text-white border border-pink-700"
+>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-500 transition-all duration-200">
+    <User className="mr-3 h-5 w-5" /> Profile
+  </button>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-500 transition-all duration-200">
+    <Bookmark className="mr-3 h-5 w-5" /> Bookmarks
+  </button>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-500 transition-all duration-200">
+    <CheckCircle className="mr-3 h-5 w-5" /> My Solutions
+  </button>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-500 transition-all duration-200">
+    <Mail className="mr-3 h-5 w-5" /> Messages
+  </button>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-500 transition-all duration-200">
+    <Lock className="mr-3 h-5 w-5" /> Privacy Settings
+  </button>
+  <button className="flex items-center w-full px-4 py-2 hover:bg-pink-700 transition-all duration-200">
+    <XCircle className="mr-3 h-5 w-5" /> Logout
+  </button>
+</motion.div>
+
+
   );
 
   const renderPost = (post) => (
