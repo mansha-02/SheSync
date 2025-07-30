@@ -663,20 +663,24 @@ export function Landing() {
                 </h4>
                 <ul className="space-y-2">
                   <li>
-                    <a
-                      href="#"
-                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+                    <button
+                      onClick={() => navigate("/symptomsanalyzer")}
+                      className="bg-pink-600 dark:bg-pink-500 text-white-700 dark:text-white dark:border-white
+                       hover:bg-pink-700 hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+
                     >
                       About Us
-                    </a >
+                    </button>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="inline-block text-gray-700 dark:text-white hover:text-white transform hover:scale-105 transition duration-200 ease-in-out"
+                    <button
+                      onClick={() => navigate("/parents")}
+
+                      className="bg-pink-600 text-white-700 dark:text-white dark:border-white dark:bg-pink-500 hover:text-white hover:bg-pink-700 transform hover:scale-105 transition duration-200 ease-in-out"
+
                     >
                       Careers
-                    </a >
+                    </button>
                   </li>
                   <li>
                     <a
