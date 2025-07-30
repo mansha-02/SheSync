@@ -22,6 +22,7 @@ import MemoryGamePage from "../components/Bliss/games/MemoryGame";
 import QuoteJoke from "../components/Bliss/games/QuoteJoke";
 import MoodMap from "../components/Bliss/games/Moodmap";
 import SimonGame from "../components/Bliss/games/SimonGame";
+import Contributors from "../components/Contributors";
 
 export const appRoutes = [
   {
@@ -115,5 +116,9 @@ export const appRoutes = [
   {
     path: "/bliss/simon",
     element: <ProtectedRouteWrapper Component={SimonGame} />,
+  },
+  {
+    path: "/contributors",
+    element: <ProtectedRouteWrapper Component={Contributors} />,
   },
 ];

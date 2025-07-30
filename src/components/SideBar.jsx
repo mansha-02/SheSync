@@ -30,6 +30,7 @@ import {
   SignUpButton,
 } from "@clerk/clerk-react";
 import { useTheme } from "../context/ThemeContext";
+import { GitHub } from "react-feather";
 
 export default function SideBar({
   sidebarVisible,
@@ -247,6 +248,14 @@ export default function SideBar({
               )
             }
             active={active[15]}
+          />
+            <SidebarLink
+            icon={<GitHub size={20} />}
+            label="Contributors"
+            onClick={() =>
+              navigate("/contributors")
+            }
+            active={active[16]}
           />
         </div>
       </aside>
