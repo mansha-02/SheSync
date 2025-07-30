@@ -46,6 +46,13 @@ const games = [
       "Repeat the pattern shown by the game. Test your memory and reflexes!",
     link: "/bliss/simon",
   },
+  {
+    title: "Hangman Game",
+    image: "/bliss/images/Hangman.png",
+    description:
+      "A health-themed Hangman game where you guess words related to pregnancy and the menstrual cycle, one letter at a time!",
+    link: "/bliss/Hangman",
+  },
 ];
 
 export default function Bliss() {
